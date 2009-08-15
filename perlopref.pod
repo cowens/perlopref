@@ -34,11 +34,15 @@
 
 =head3 Description
 
-This is the array/list index operator.  It retrieves the Yth value
-from X.  If Y is a list then a slice is returned (see L<perldata> for
-information about slices).  Indexes are C<0> based (unless C<$[> has 
-been set to a non-zero value). Negative indexes count backwards from
-the end of the list or array.
+This is the array/list index operator.  It retrieves the Yth value from X.
+If Y is a list then a slice is returned (see L<perldata> for information
+about slices).  Indexes are C<0> based (unless C<$[> has been set to a
+non-zero value). Negative indexes count backwards from the end of the list
+or array.
+
+The index Y is treated as a number, so, it is converted to a number before
+it is used use. If it cannot be converted then it is turned into C<0> (and a
+warning is thrown if L<< C<warnings> >> are turned on).
 
 =head3 Example
 
@@ -51,8 +55,8 @@ the end of the list or array.
 
 =head3 Description
 
-This is the hash index operator.  It retrieves the value associated with
-the key Y from X.  If Y is a list of keys then a slice is returned (see 
+This is the hash index operator.  It retrieves the value associated with the
+key Y from X.  If Y is a list of keys then a slice is returned (see
 L<perldata> for information about slices).
 
 =head3 Example
@@ -69,10 +73,10 @@ L<perldata> for information about slices).
 
 =head3 Description
 
-This is the infix dereference operator (AKA The Arrow Operator).  It 
-either fetches the value associated with Y (C<< X->[Y] >> and C<< X->{Y} >>)
-from what X refers to or calls the function X refers to with an argument
-list of Y (C<< X->(Y) >>).
+This is the infix dereference operator (AKA The Arrow Operator).  It either
+fetches the value associated with Y (C<< X->[Y] >> and C<< X->{Y} >>) from
+what X refers to or calls the function X refers to with an argument list of
+Y (C<< X->(Y) >>).
 
 =head3 Example
 
@@ -94,23 +98,22 @@ list of Y (C<< X->(Y) >>).
 
 =head3 Description
 
-This is the prefix auto-increment operator.  It is roughly equivalent to
-C<X = X + 1>, but there is a bit of extra magic to it.  If
-you increment a variable that is numeric, or that has ever been used in
-a numeric context, you get a normal increment.  If, however, the
-variable has been used in only string contexts since it was set, and
-has a value that is not the empty string and matches the pattern
-C</^[a-zA-Z]*[0-9]*\z/>, the increment is done as a string, preserving each
-character within its range, with carry:
+This is the prefix auto-increment operator.  It is roughly equivalent to C<X
+= X + 1>, but there is a bit of extra magic to it.  If you increment a
+variable that is numeric, or that has ever been used in a numeric context,
+you get a normal increment.  If, however, the variable has been used in only
+string contexts since it was set, and has a value that is not the empty
+string and matches the pattern C</^[a-zA-Z]*[0-9]*\z/>, the increment is
+done as a string, preserving each character within its range, with carry:
 
     print ++($foo = '99');      # prints '100'
     print ++($foo = 'a0');      # prints 'a1'
     print ++($foo = 'Az');      # prints 'Ba'
     print ++($foo = 'zz');      # prints 'aaa'
 
-C<undef> is always treated as numeric, and in particular is changed
-to C<0> before incrementing (so that a post-increment of an undef value
-will return C<0> rather than C<undef>).
+C<undef> is always treated as numeric, and in particular is changed to C<0>
+before incrementing (so that a post-increment of an undef value will return
+C<0> rather than C<undef>).
 
 The incrementing occurs before the use of the value.
 
@@ -126,10 +129,10 @@ The incrementing occurs before the use of the value.
 
 =head3 Description
 
-This is the postfix auto-increment operator.  It behaves the same way as 
-the prefix auto-increment operator C<++X>, including the magic, but the value
-is taken before the incrementing is done. So, the after the following code 
-C<$x> will be C<5> and C<$y> will be 4.  Whereas with the prefix 
+This is the postfix auto-increment operator.  It behaves the same way as the
+prefix auto-increment operator C<++X>, including the magic, but the value is
+taken before the incrementing is done. So, the after the following code
+C<$x> will be C<5> and C<$y> will be 4.  Whereas with the prefix
 auto-increment operator, both values would be C<5>.
 
 =head3 Example
@@ -144,9 +147,13 @@ auto-increment operator, both values would be C<5>.
 
 =head3 Description
 
-This is the prefix auto-decrement operator.  It is equivalent to C<X = X - 1>.
-The value returned is reflects the decementing, so after the following code 
-runs, C<$x> and C<$y> will be 4.
+This is the prefix auto-decrement operator.  It is equivalent to 
+C<X = X - 1>.  The value returned is reflects the decementing, so after the
+following code runs, C<$x> and C<$y> will be C<4>.
+
+X will be converted to a number before decrementing, and if it cannot be
+converted it will turned into C<0> (and a warning is thrown if L<<
+C<warnings> >> are turned on).
 
 =head3 Example
 
@@ -157,9 +164,13 @@ runs, C<$x> and C<$y> will be 4.
 
 =head3 Description
 
-This is the postfix auto-decrement operator.  It is equivalent to C<X = X - 1>.
-The value returned is the value before decementing, so after the following code 
-runs, C<$x> will be 4 and C<$y> will be 5.
+This is the postfix auto-decrement operator.  It is equivalent to 
+C<X = X - 1>.  The value returned is the value before decementing, so after
+the following code runs, C<$x> will be 4 and C<$y> will be C<5>.
+
+X will be converted to a number before the operation, and if it cannot be
+converted it will turned into C<0> (and a warning is thrown if L<<
+C<warnings> >> are turned on).
 
 =head3 Example
 
@@ -170,8 +181,13 @@ runs, C<$x> will be 4 and C<$y> will be 5.
 
 =head3 Description
 
-This is the exponentiation operator.  It raises X to the Yth power.  Warning:
-it binds more tightly than unary minus, so -2**4 is -(2**4), not (-2)**4. 
+This is the exponentiation operator.  It raises X to the Yth power.
+Warning: it binds more tightly than unary minus, so C<-2**4> is C<-(2**4)>,
+not C<(-2)**4>. 
+
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
 
 =head3 Example
 
@@ -181,8 +197,8 @@ it binds more tightly than unary minus, so -2**4 is -(2**4), not (-2)**4.
 
 =head3 Description
 
-This is the high-precedence logical negation operator.  It performs
-logical negation, i.e., "not".  There is a low-prcedence version C<not>.
+This is the high-precedence logical negation operator.  It performs logical
+negation, i.e., "not".  There is a low-prcedence version C<not>.
 
 =head3 Example
 
@@ -195,11 +211,15 @@ logical negation, i.e., "not".  There is a low-prcedence version C<not>.
 
 =head3 Description
 
-This is the bitwise negation operator (AKA 1's complement operator).  The
-width of the result is platform-dependent: ~0 is 32 bits wide on a 32-bit
-platform, but 64 bits wide on a 64-bit platform, so if you are expecting a
-certain bit width, remember to use the & operator to mask off the excess 
-bits.
+This is the bitwise negation operator (AKA C<1>'s complement operator).  The
+width of the result is platform-dependent: C<~0> is C<32> bits wide on a
+C<32>-bit platform, but C<64> bits wide on a C<64>-bit platform, so if you
+are expecting a certain bit width, remember to use the C<&> operator to mask
+off the excess bits.
+
+X will be converted to a number before the operation, and if it cannot be
+converted it will turned into C<0> (and a warning is thrown if L<<
+C<warnings> >> are turned on).
 
 =head3 Example
 
@@ -213,8 +233,8 @@ L<Bitwise String Operators> and L<Integer Arithmetic> in L<perlop>
 
 =head3 Description
 
-This is the backslash operator (AKA the reference operator).  It creates 
-a reference to X.  
+This is the backslash operator (AKA the reference operator).  It creates a
+reference to X.  
 
 =head3 Example
 
@@ -247,10 +267,10 @@ L<< X -> Y >> in L<perlopref>, L<perlreftut>, and L<perlref>
 
 =head3 Description
 
-This is the unary plus operator.  It has no effect whatsoever, even on 
-strings.  It is useful syntactically for separating a function name from
-a parenthesized expression that would otherwise be interpreted as the 
-complete list of function arguments.
+This is the unary plus operator.  It has no effect whatsoever, even on
+strings.  It is useful syntactically for separating a function name from a
+parenthesized expression that would otherwise be interpreted as the complete
+list of function arguments.
 
 =head3 Example
 
@@ -261,8 +281,8 @@ complete list of function arguments.
 
 =head3 Description
 
-The unary minus operator performs arithmetic negation if X is numeric.
-If is a bareword it returns a string consisting of - and the bareword.
+The unary minus operator performs arithmetic negation if X is numeric.  If
+is a bareword it returns a string consisting of - and the bareword.
 
 =head3 Example
 
@@ -275,22 +295,21 @@ If is a bareword it returns a string consisting of - and the bareword.
 
 =head3 Description
 
-This is the binding operator.  It applies a regex match (C<m//>), 
-substitution (C<s///>), or transliteration (C<tr///> or C<y///>)
-Y against a string X.  When used in scalar context, the return value 
-generally indicates the success of the operation.  Behavior in list 
-context depends on the particular operator.  See 
-L</"Regexp Quote-Like Operators"> for details and L<perlretut> for 
-examples using these operators.
+This is the binding operator.  It applies a regex match (C<m//>),
+substitution (C<s///>), or transliteration (C<tr///> or C<y///>) Y against a
+string X.  When used in scalar context, the return value generally indicates
+the success of the operation.  Behavior in list context depends on the
+particular operator.  See L</"Regexp Quote-Like Operators"> for details and
+L<perlretut> for examples using these operators.
 
-If Y is an expression rather than a search pattern, substitution, 
-or transliteration, it is interpreted as a search pattern at run
-time. Note that this means that its contents will be interpolated twice, so
+If Y is an expression rather than a search pattern, substitution, or
+transliteration, it is interpreted as a search pattern at run time. Note
+that this means that its contents will be interpolated twice, so
 
   '\\' =~ q'\\';
 
-is not ok, as the regex engine will end up trying to compile the
-pattern C<\>, which it will consider a syntax error.
+is not ok, as the regex engine will end up trying to compile the pattern
+C<\>, which it will consider a syntax error.
 
 =head3 Example
 
@@ -309,8 +328,8 @@ L<perlop>, L<perlretut>, and L<prelre>
 
 =head3 Description
 
-This is the negative binding operator.  It behaves like the =~ operator, but
-the return is logically negated.
+This is the negative binding operator.  It behaves like the C<=~> operator,
+but the return is logically negated.
 
 =head3 Example
 
@@ -331,6 +350,10 @@ L<< C<=~> >>
 
 This is the multiplication operator.  It returns X multiplied by Y.
 
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
+
 =head3 Example
 
     my $x = 2 * 21; #$x is now 42
@@ -340,6 +363,10 @@ This is the multiplication operator.  It returns X multiplied by Y.
 =head3 Description
 
 This is the division operator.  It divides X by Y.
+
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
 
 =head3 Example
 
@@ -384,6 +411,10 @@ access to the modulo operator as implemented by your C compiler.  This
 operator is not as well defined for negative operands, but it will
 execute faster.
 
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
+
 =head3 Example
 
     my $odd = $x % 2; #$odd is 1 when $x is odd and 0 when $x is even
@@ -400,6 +431,10 @@ This is the repetition operator.  When X is a scalar value it returns
 a string made up of X repeated Y times.  When X is a list it returns
 a list made up of X repeated Y times.
 
+Y will be converted to a number before the operation, and if it cannot be
+converted it will turned into C<0> (and a warning is thrown if L<<
+C<warnings> >> are turned on).
+
 =head3 Example
 
     my $x = "abc" x 3;  #$x is now the string "abcabcabc"
@@ -411,6 +446,10 @@ a list made up of X repeated Y times.
 
 This is the addition operator.
 
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
+
 =head3 Example
 
     my $x = 40 + 2; #$x is now 42
@@ -420,6 +459,10 @@ This is the addition operator.
 =head3 Description
 
 This is the subtraction operator.
+
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
 
 =head3 Example
 
@@ -442,6 +485,10 @@ native C compiler's left bit-shift operator (and those operations are not
 defined by ISO C).
 
 Shifting 1 bit to the left is the same as multiplying the number by 2.
+
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
 
 =head3 Example
 
@@ -467,6 +514,10 @@ When Y is negative the reults are not well defined (i.e. platform specific).
 This is because the right bit-shift operator is implemented by the native C
 compiler's right bit-shift operator  (and that is not defined by ISO C).
 
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
+
 =head3 Example
 
     my $x = 0x00_FF_00_FF >> 8; #$x is now 0x00_00_FF_00
@@ -478,9 +529,11 @@ compiler's right bit-shift operator  (and that is not defined by ISO C).
 
 This is the numeric less than operator.  It returns a true value if X is
 numerically less than Y or a false value if X is greater than or equal to
-Y.  As always, strings in numeric context are converted to numbers before
-comparison, and if they cannot be they are turned into C<0> (and a warning
-is thrown if L<< C<warnings> >> are turned on).
+Y.
+
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
 
 =head3 Example
 
@@ -500,9 +553,11 @@ is thrown if L<< C<warnings> >> are turned on).
 
 This is the numeric greater than operator.  It returns a true value if X is
 numerically greater than Y or a false value if X is less than or equal to
-Y.  As always, strings in numeric context are converted to numbers before
-comparison, and if they cannot be they are turned into C<0> (and a warning
-is thrown if L<< C<warnings> >> are turned on).
+Y.
+
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
 
 =head3 Example
 
@@ -522,10 +577,11 @@ is thrown if L<< C<warnings> >> are turned on).
 
 This is the numeric less than or equal to operator.  It returns a true 
 value if X is numerically less than or equal to Y or a false value if 
-X is greater than to Y.  As always, strings in numeric context are 
-converted to numbers before comparison, and if they cannot be they are 
-turned into C<0> (and a warning is thrown if L<< C<warnings> >> are 
-turned on).
+X is greater than to Y.
+
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
 
 =head3 Example
 
@@ -545,10 +601,11 @@ turned on).
 
 This is the numeric less than or equal to operator.  It returns a true 
 value if X is numerically less than or equal to Y or a false value if 
-X is greater than to Y.  As always, strings in numeric context are 
-converted to numbers before comparison, and if they cannot be they are 
-turned into C<0> (and a warning is thrown if L<< C<warnings> >> are 
-turned on).
+X is greater than to Y.
+
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
 
 =head3 Example
 
