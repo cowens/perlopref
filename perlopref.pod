@@ -29,6 +29,7 @@
 =head1 OPERATORS
 
 =head2 X[Y]
+
 =head2 (X)[Y]
 
 =head3 Description
