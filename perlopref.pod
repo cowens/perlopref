@@ -29,6 +29,7 @@
 =head1 OPERATORS
 
 =head2 X[Y]
+
 =head2 (X)[Y]
 
 =head3 Description
@@ -61,7 +62,9 @@ L<perldata> for information about slices).
     my @a = @h{"a", "b"}; #@a is now (1, 2)
 
 =head2 X->[Y]
+
 =head2 X->{Y}
+
 =head2 X->(Y)
 
 =head3 Description
@@ -388,6 +391,7 @@ execute faster.
     my $hour = ($hour + 1) % 24; # 23 (11pm) plus 1 hour is 0 (12am). 
 
 =head2 X x Y
+
 =head2 (X) x Y
 
 =head3 Description
