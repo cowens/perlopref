@@ -449,8 +449,6 @@ Shifting 1 bit to the left is the same as multiplying the number by 2.
 
     my $z = 6 << 1; #$z is now 12
 
-    
-
 =head2 X >> Y
 
 =head3 Description
@@ -470,36 +468,95 @@ compiler's right bit-shift operator  (and that is not defined by ISO C).
     my $x = 0x00_FF_00_FF >> 8; #$x is now 0x00_00_FF_00
     my $y = 12 >> 1;            #$y is now 6
 
-
 =head2 X < Y
 
 =head3 Description
 
+This is the numeric less than operator.  It returns a true value if X is
+numerically less than Y or a false value if X is greater than or equal to
+Y.  As always, strings in numeric context are converted to numbers before
+comparison, and if they cannot be they are turned into C<0> (and a warning
+is thrown if L<< C<warnings> >> are turned on).
+
 =head3 Example
+
+    if (4 < 5) {
+        print "this is true unless Perl is broken\n";
+    }
+
+    if (5 < 4) {
+        print "this should never be true\n";
+    } else {
+        print "it should always be false\n";
+    }
 
 =head2 X > Y
 
 =head3 Description
 
+This is the numeric greater than operator.  It returns a true value if X is
+numerically greater than Y or a false value if X is less than or equal to
+Y.  As always, strings in numeric context are converted to numbers before
+comparison, and if they cannot be they are turned into C<0> (and a warning
+is thrown if L<< C<warnings> >> are turned on).
+
 =head3 Example
 
+    if (5 > 4) {
+        print "this is true unless Perl is broken\n";
+    }
 
+    if (4 > 5) {
+        print "this should never be true\n";
+    } else {
+        print "it should always be false\n";
+    }
 
 =head2 X <= Y
 
 =head3 Description
 
+This is the numeric less than or equal to operator.  It returns a true 
+value if X is numerically less than or equal to Y or a false value if 
+X is greater than to Y.  As always, strings in numeric context are 
+converted to numbers before comparison, and if they cannot be they are 
+turned into C<0> (and a warning is thrown if L<< C<warnings> >> are 
+turned on).
+
 =head3 Example
 
+    if (4 <= 4) {
+        print "this is true unless Perl is broken\n";
+    }
 
+    if (5 <= 4) {
+        print "this should never be true\n";
+    } else {
+        print "it should always be false\n";
+    }
 
 =head2 X >= Y
 
 =head3 Description
 
+This is the numeric less than or equal to operator.  It returns a true 
+value if X is numerically less than or equal to Y or a false value if 
+X is greater than to Y.  As always, strings in numeric context are 
+converted to numbers before comparison, and if they cannot be they are 
+turned into C<0> (and a warning is thrown if L<< C<warnings> >> are 
+turned on).
+
 =head3 Example
 
+    if (4 >= 4) {
+        print "this is true unless Perl is broken\n";
+    }
 
+    if (4 >= 5) {
+        print "this should never be true\n";
+    } else {
+        print "it should always be false\n";
+    }
 
 =head2 X lt Y
 
