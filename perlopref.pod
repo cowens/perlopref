@@ -461,7 +461,7 @@ C<warnings> >> are turned on).
 
 =head3 Description
 
-This is the addition operator.
+This is the addition operator.  It returns the result of X plus Y.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
@@ -475,7 +475,7 @@ L<< C<warnings> >> are turned on).
 
 =head3 Description
 
-This is the subtraction operator.
+This is the subtraction operator.  It returns the result of X minus Y.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
