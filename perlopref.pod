@@ -649,11 +649,11 @@ C<127> characters, this order is the same as the ASCII order).
 
 =head3 Example
 
-    if ("a" < "b") {
+    if ("a" lt "b") {
         print "this is true unless the locale is really weird\n";
     }
 
-    if ("z" < "a") {
+    if ("z" lt "a") {
         print "this should never be true (unless the local is weird)\n";
     } else {
         print "it should always be false (unless the local is weird)\n";
@@ -672,11 +672,11 @@ C<127> characters, this order is the same as the ASCII order).
 
 =head3 Example
 
-    if ("b" > "a") {
+    if ("b" gt "a") {
         print "this is true unless the locale is really weird\n";
     }
 
-    if ("a" > "z") {
+    if ("a" gt "z") {
         print "this should never be true (unless the local is weird)\n";
     } else {
         print "it should always be false (unless the local is weird)\n";
@@ -696,12 +696,11 @@ same as the ASCII order).
 
 =head3 Example
 
-
-    if ("a" <= "a") {
+    if ("a" le "a") {
         print "this is true unless Perl is broken\n";
     }
 
-    if ("z" <= "a") {
+    if ("z" le "a") {
         print "this should never be true (unless the local is weird)\n";
     } else {
         print "it should always be false (unless the local is weird)\n";
@@ -721,11 +720,11 @@ order is the same as the ASCII order).
 
 =head3 Example
 
-    if ("a" >= "a") {
+    if ("a" ge "a") {
         print "this is true unless Perl is broken\n";
     }
 
-    if ("a" >= "z") {
+    if ("a" ge "z") {
         print "this should never be true (unless the local is weird)\n";
     } else {
         print "it should always be false (unless the local is weird)\n";
