@@ -776,9 +776,43 @@ less than and greater than operators with a small delta:
 
 =head3 Description
 
+This is the numeric not equals operator.  It returns true if X does not
+evaluate to the same numeric value as Y.  
+
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
+
+Important note: the numeric equaility operator should not be used with
+floating point numbers as the error introduced by rounding may cause the
+number to not be exactly what you are comparing agaisnt.  Always use the
+less than and greater than operators with a small delta:
+
+    my $x = 0;
+    
+    for (1 .. 10) {
+        $x += .1;
+    }
+    
+    if ($x != 1) {
+        print "oops, darn floating point numbers\n";
+    }
+    
+    my $delta = 1e-15; #0.000000000000001
+    if (
+        $x > 1 + $delta and
+        $x < 1 - $delta
+    ) {
+        print "wow, your floating point representation is really good\n";
+    } else {
+        print "this time it worked\n";
+    }
+
 =head3 Example
 
-
+    if (5 != 4) {
+        print "this will be true unless Perl is broken\n"
+    }
 
 =head2 X <=> Y
 
