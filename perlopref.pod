@@ -150,7 +150,7 @@ auto-increment operator, both values would be C<5>.
 =head3 Description
 
 This is the prefix auto-decrement operator.  It is equivalent to 
-C<X = X - 1>.  The value returned is reflects the decementing, so after the
+C<X = X - 1>.  The value returned is reflects the decrementing, so after the
 following code runs, C<$x> and C<$y> will be C<4>.
 
 X will be converted to a number before decrementing, and if it cannot be
@@ -167,7 +167,7 @@ C<warnings> >> are turned on).
 =head3 Description
 
 This is the postfix auto-decrement operator.  It is equivalent to 
-C<X = X - 1>.  The value returned is the value before decementing, so after
+C<X = X - 1>.  The value returned is the value before decrementing, so after
 the following code runs, C<$x> will be 4 and C<$y> will be C<5>.
 
 X will be converted to a number before the operation, and if it cannot be
@@ -200,7 +200,7 @@ L<< C<warnings> >> are turned on).
 =head3 Description
 
 This is the high-precedence logical negation operator.  It performs logical
-negation, i.e., "not".  There is a low-prcedence version C<not>.
+negation, i.e., "not".  There is a low-precedence version C<not>.
 
 =head3 Example
 
@@ -496,7 +496,7 @@ one before the operation begins.
 New bits added to the right side are all C<0>.  Overflowing the integer type
 on you platform (i.e. creating a number too large to store in your platform's
 integer type) results in behavior that is not well defined (i.e. it is 
-platform specific).  When Y is negative the reults are also not well 
+platform specific).  When Y is negative the results are also not well 
 defined.  This is because the left bit-shift operator is implemented by the 
 native C compiler's left bit-shift operator (and those operations are not 
 defined by ISO C).
@@ -525,11 +525,12 @@ This is the right-bit shift operator.  It shift bits that make up the integer
 X Y places to the right.  If X is not an integer it will be converted into 
 one before the operation begins.  Bits shifted past the rightmost edge
 are lost.  New bits added to the left side are all 0.  Shifting to the right
-one bit is the the same as an integer divison by 2.
+one bit is the same as an integer division by 2.
 
-When Y is negative the reults are not well defined (i.e. platform specific).
-This is because the right bit-shift operator is implemented by the native C
-compiler's right bit-shift operator  (and that is not defined by ISO C).
+When Y is negative the results are not well defined (i.e. platform
+specific).  This is because the right bit-shift operator is implemented by
+the native C compiler's right bit-shift operator  (and that is not defined
+by ISO C).
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
@@ -741,9 +742,9 @@ Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
 L<< C<warnings> >> are turned on).
 
-Important note: the numeric equaility operator should not be used with
+Important note: the numeric equality operator should not be used with
 floating point numbers as the error introduced by rounding may cause the
-number to not be exactly what you are comparing agaisnt.  Always use the
+number to not be exactly what you are comparing against.  Always use the
 less than and greater than operators with a small delta:
 
     my $x = 0;
@@ -783,9 +784,9 @@ Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
 L<< C<warnings> >> are turned on).
 
-Important note: the numeric equaility operator should not be used with
+Important note: the numeric equality operator should not be used with
 floating point numbers as the error introduced by rounding may cause the
-number to not be exactly what you are comparing agaisnt.  Always use the
+number to not be exactly what you are comparing against.  Always use the
 less than and greater than operators with a small delta:
 
     my $x = 0;
@@ -818,9 +819,22 @@ less than and greater than operators with a small delta:
 
 =head3 Description
 
+This is the numeric comparison operator.  It returns less than C<0>  if X is
+numerically less than Y, C<0> is if X and Y are the same numerically, or
+more than C<0> if X is numerically greater than Y.  It is most often seen
+combined with the C<sort> function:
+
+    my @sorted = sort { $a <=> $b } @unsorted;
+
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
+
 =head3 Example
 
-
+    my $x = 4 <=> 5; #x is now negative
+    my $y = 5 <=> 5; #y is now 0
+    my $z = 6 <=> 5; #z is now positive
 
 =head2 X eq Y
 
