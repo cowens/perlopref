@@ -840,25 +840,62 @@ L<< C<warnings> >> are turned on).
 
 =head3 Description
 
+This is the lexical equality operator (aka the string equality operator or
+the stringwise equality operator).  It returns true if X and Y evaluate as
+the same string.
+
 =head3 Example
 
+    if ("foo" eq "foo") {
+        print "this is true, unless Perl is broken\n";
+    }
 
+    if ("foo" eq "bar") {
+        print "this is should always be false, unless Perl is broken\n";
+    } else {
+        print "this is false, unless Perl is broken\n";
+    }
 
 =head2 X ne Y
 
 =head3 Description
 
+This is the lexical not equals operator. (aka the string not equals operator
+or the stringwise not equals operator).  It returns false if X and Y
+evaluate as the same string.
+
 =head3 Example
 
+    if ("foo" ne "bar") {
+        print "this is true, unless Perl is broken\n";
+    }
 
+    if ("foo" ne "foo") {
+        print "this is should always be false, unless Perl is broken\n";
+    } else {
+        print "this is false, unless Perl is broken\n";
+    }
 
 =head2 X cmp Y
 
 =head3 Description
 
+This is the lexical comparison operator (also known as the string comparison
+operator or the stringwise comparison operator).  It returns a negative
+value if X is lexically less than Y, C<0> is X and Y are lexically the same,
+or a positive value if X is lexically larger than Y.  This comparison is
+affected by the current locale and the default order is determined by the
+Unicode ordinal value (since Unicode contains the ASCII set as its first
+C<127> characters, this order is the same as the ASCII order).  It is most
+commonly seen used with the C<sort> function:
+
+    my @sorted = sort { $a cmp $b } @unsorted;
+
 =head3 Example
 
-
+    my $x = "a" <=> "b"; #$x is now negative
+    my $y = "b" <=> "b"; #$x is now 0
+    my $z = "c" <=> "b"; #$x is now positive
 
 =head2 X ~~ Y
 
