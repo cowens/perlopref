@@ -686,25 +686,92 @@ C<127> characters, this order is the same as the ASCII order).
 
 =head3 Description
 
+This is the lexical less than or equal to operator (also known as the string
+less than or equal to operator or the stringwise less than or equal to
+operator).  It returns true if X is less than or equal to Y and false if X
+is greater than Y.  The order of various characters is locale dependent.
+The default order is determined by the Unicode ordinal value (since Unicode
+contains the ASCII set as its first C<127> characters, this order is the
+same as the ASCII order).
+
 =head3 Example
 
 
+    if ("a" <= "a") {
+        print "this is true unless Perl is broken\n";
+    }
+
+    if ("z" <= "a") {
+        print "this should never be true (unless the local is weird)\n";
+    } else {
+        print "it should always be false (unless the local is weird)\n";
+    }
 
 =head2 X ge Y
 
 =head3 Description
 
+This is the lexical greater than or equal to operator (also known as the
+string greater than or equal to operator or the stringwise greater than or
+equal to operator).  It returns true if X is greater than Y and false if X
+is less than or equal to Y.  The order of various characters is locale
+dependent.  The default order is determined by the Unicode ordinal value
+(since Unicode contains the ASCII set as its first C<127> characters, this
+order is the same as the ASCII order).
+
 =head3 Example
 
+    if ("a" >= "a") {
+        print "this is true unless Perl is broken\n";
+    }
 
+    if ("a" >= "z") {
+        print "this should never be true (unless the local is weird)\n";
+    } else {
+        print "it should always be false (unless the local is weird)\n";
+    }
 
 =head2 X == Y
 
 =head3 Description
 
+This is the numeric equality operator.  It returns true if X and Y evaluate
+as the same number.
+
+Both X and Y will be converted to numbers before the operation; if they
+cannot be converted they will turned into C<0> (and a warning is thrown if
+L<< C<warnings> >> are turned on).
+
+Important note: the numeric equaility operator should not be used with
+floating point numbers as the error introduced by rounding may cause the
+number to not be exactly what you are comparing agaisnt.  Always use the
+less than and greater than operators with a small delta:
+
+    my $x = 0;
+    
+    for (1 .. 10) {
+        $x += .1;
+    }
+    
+    if ($x == 1) {
+        print "$x is one\n";
+    } else {
+        print "oops, darn floating point numbers\n";
+    }
+    
+    my $delta = 1e-15; #0.000000000000001
+    if (
+        $x < 1 + $delta and
+        $x > 1 - $delta
+    ) {
+        print "this time it worked\n";
+    }
+
 =head3 Example
 
-
+    if (5 == 5) {
+        print "this will be trye unless Perl is broken\n"
+    }
 
 =head2 X != Y
 
