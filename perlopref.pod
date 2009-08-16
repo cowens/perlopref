@@ -901,9 +901,16 @@ commonly seen used with the C<sort> function:
 
 =head3 Description
 
+This is the smartmatch operator.  In 5.10 and 5.10.1 it has different
+behavior.  See L<perlsyn/"Smart matching in detail"> for more detail.
+
 =head3 Example
 
+See L<perlsyn/"Smart matching in detail"> for examples.
 
+=head3 See also
+
+L<perlsyn/"Smart matching in detail">
 
 =head2 X & Y
 
