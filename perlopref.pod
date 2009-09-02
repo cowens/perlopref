@@ -917,7 +917,24 @@ L<perlsyn/"Smart matching in detail">
 =head3 Description
 
 This is the bitwise and operator.  It ands together the individual bits of X
-and Y.  
+and Y.  The truth table for and is:
+
+     X Y   R
+    -----+---
+     0 0 | 0
+     0 1 | 0
+     1 0 | 0
+     1 1 | 1
+
+That is, it sets the result bit to 1 if both the X and Y bits are 1,
+otherwise it sets the result bit to 0.  This operation is done for every bit
+in X and Y.  
+
+If both operands are strings, they are considered character by character.
+The result is determined by anding the ordinal value of the characters, so
+C<"a" & "b"> is equivalent to C<chr(ord("a") & ord("b"))>.  If X and Y are
+different sizes, then the longer string is truncated to the length of the
+shorter string.
 
 =head3 Example
 
@@ -930,7 +947,7 @@ and Y.
     #0x4545          is 0b0000_0100_0000_0101_0000_0100_0000_0101
     #0x00FF          is 0b0000_0000_0000_0000_1111_1111_1111_1111
     #0x4545 & 0x00FF is 0b0000_0000_0000_0000_0000_0100_0000_0101 or 0x0045
-    my $y = 0x4545 & 0x00FF; #$y is now 0x0045
+    my $z = 0x4545 & 0x00FF; #$z is now 0x0045
 
 =head3 See also
 
@@ -940,17 +957,82 @@ L<perlop/Integer Arithmetic> and L<perlop/Bitwise String Operators>.
 
 =head3 Description
 
+This is the bitwise or operator.  It ors together the individual bits of X
+and Y.  The truth table for or is:
+
+     X Y   R
+    -----+---
+     0 0 | 0
+     0 1 | 1
+     1 0 | 1
+     1 1 | 1
+
+That is, it sets the result bit to 0 if both the X and Y bits are 0,
+otherwise it sets the result bit to 1.  This operation is done for every bit
+in X and Y.  
+
+If both operands are strings, they are considered character by character.
+The result is determined by oring the ordinal value of the characters, so
+C<"a" | "b"> is equivalent to C<chr(ord("a") | ord("b"))>.  If X and Y are
+different sizes, then the shorter item is treated as if it had additional
+bits that are set to 0.
+
 =head3 Example
 
+    #In ASCII (and UTF-8)
+    #"a"       is 0b0110_0001
+    #"b"       is 0b0110_0010
+    #"a" | "b" is 0b0110_0011 or "c" 
+    my $x = "a" | "b"; #$x is now "c"
 
+    #0x4545          is 0b0000_0100_0000_0101_0000_0100_0000_0101
+    #0x00FF          is 0b0000_0000_0000_0000_1111_1111_1111_1111
+    #0x4545 | 0x00FF is 0b0000_0100_0000_0101_1111_1111_1111_1111 or 0x45FF
+    my $y = 0x4545 | 0x00FF; #$y is now 0x45FF
+
+=head3 See also
+
+L<perlop/Integer Arithmetic> and L<perlop/Bitwise String Operators>.
 
 =head2 X ^ Y
 
 =head3 Description
 
+This is the bitwise xor operator.  It xors together the individual bits of X
+and Y.  The truth table for xor is:
+
+     X Y   R
+    -----+---
+     0 0 | 0
+     0 1 | 1
+     1 0 | 1
+     1 1 | 0
+
+That is, it sets the result bit to 1 if X or Y is set, or 0 if both or
+neither is set.  This operation is done for every bit in X and Y.  
+
+If both operands are strings, they are considered character by character.
+The result is determined by xoring the ordinal value of the characters, so
+C<"a" ^ "b"> is equivalent to C<chr(ord("a") ^ ord("b"))>.  If X and Y are
+different sizes, then the shorter item is treated as if it had additional
+bits that are set to 0.
+
 =head3 Example
 
+    #In ASCII (and UTF-8)
+    #"a"       is 0b0110_0001
+    #"b"       is 0b0110_0010
+    #"a" ^ "b" is 0b0000_0011 or "\x{03}" 
+    my $x = "a" ^ "b"; #$x is now "\x{03}"
 
+    #0x4545          is 0b0000_0100_0000_0101_0000_0100_0000_0101
+    #0x00FF          is 0b0000_0000_0000_0000_1111_1111_1111_1111
+    #0x4545 ^ 0x00FF is 0b0000_0100_0000_0101_1111_1111_1111_1010 or 0x45BA
+    my $y = 0x4545 ^ 0x00FF; #$y is now 0x45FF
+
+=head3 See also
+
+L<perlop/Integer Arithmetic> and L<perlop/Bitwise String Operators>.
 
 =head2 X && Y
 
