@@ -1559,9 +1559,9 @@ This is the logical and assignment operator.  It is equivalent to
 
     X = X && Y
 
-That is it assigns Y to X if both X and Y are true or X is true and Y is
-false.  If X is false it assigns X to itself.  This means that X must be a
-valid lvalue (i.e. it must be something that can be assigned to).
+That is it assigns X to itself if X evaluates to true, otherwise it assigns
+Y to X.  This means that X must be a valid lvalue (i.e. it must be something
+that can be assigned to).
 
 =head3 Example
 
