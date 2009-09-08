@@ -1245,137 +1245,115 @@ apply.
 
 =head3 Description
 
+This is the assignment operator.  It assigns Y to X.  The act of assigning
+creates an lvalue, that is the result of an assignment can be used in places
+where you would normally use a plain variable:
+
+    my $str = "foobar";
+    (my $modified = $str) =~ s/foo/bar/; #the substitution affects $modified
+
 =head3 Example
 
+    my $x = 5; #$x is now 5
+    my $y = 6; #$y is now 6
 
+    ($x, $y) = ($y, $x); #$x is now 6 and $y is now 5
+
+    my $i = my $j = my $k = 10; #$i, $j, and $k are now all 10
 
 =head2 X **= Y
 
 =head3 Description
 
+This is the exponentiation assignment operator.  It is equivalent to 
+
+    X = X ** Y
+
+That is it raises the value X to the Yth power and then assigns the result
+to X.  This means that X must be a valid lvalue (i.e. it must be something
+that can be assigned to).
+
 =head3 Example
 
+    my $x = 2;
+    my $y = 8;
 
+    $x **= $y; #$x is now 2 ** 8 or 256
 
 =head2 X += Y
 
-=head3 Description
+This is the addition assignment operator.  It is equivalent to 
+
+    X = X + Y
+
+That is it adds X and Y together and then assigns the result to X.  This
+means that X must be a valid lvalue (i.e. it must be something that can be
+assigned to).
 
 =head3 Example
 
+    my $x = 2;
+    my $y = 8;
 
+    $x += $y; #$x is now 2 + 8 or 10
 
 =head2 X -= Y
 
-=head3 Description
+This is the subtraction assignment operator.  It is equivalent to 
+
+    X = X - Y
+
+That is it subtracts Y from X and then assigns the result to X.  This means
+that X must be a valid lvalue (i.e. it must be something that can be
+assigned to).
 
 =head3 Example
 
+    my $x = 2;
+    my $y = 8;
 
+    $x -= $y; #$x is now 2 - 8 or -6
 
 =head2 X .= Y
 
-=head3 Description
+This is the concatenation assignment operator.  It is equivalent to 
+
+    X = X . Y
+
+That is it joins the strings X and Y and then assigns the result
+to X.  This means that X must be a valid lvalue (i.e. it must be something
+that can be assigned to).
 
 =head3 Example
 
+    my $x = 2;
+    my $y = 8;
 
+    $x **= $y; #$x is now 2 . 8 or "28"
 
 =head2 X *= Y
 
-=head3 Description
-
-=head3 Example
-
-
-
 =head2 X /= Y
-
-=head3 Description
-
-=head3 Example
-
-
 
 =head2 X %= Y
 
-=head3 Description
-
-=head3 Example
-
-
-
 =head2 X x= Y
-
-=head3 Description
-
-=head3 Example
-
-
 
 =head2 X &= Y
 
-=head3 Description
-
-=head3 Example
-
-
-
 =head2 X |= Y
-
-=head3 Description
-
-=head3 Example
-
-
 
 =head2 X ^= Y
 
-=head3 Description
-
-=head3 Example
-
-
-
 =head2 X <<= Y
-
-=head3 Description
-
-=head3 Example
-
-
 
 =head2 X >>= Y
 
-=head3 Description
-
-=head3 Example
-
-
-
 =head2 X &&= Y
-
-=head3 Description
-
-=head3 Example
-
-
 
 =head2 X ||= Y
 
-=head3 Description
-
-=head3 Example
-
-
-
 =head2 X //= Y
-
-=head3 Description
-
-=head3 Example
-
-
 
 =head2 X, Y
 
