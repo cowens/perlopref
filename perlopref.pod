@@ -403,13 +403,13 @@ the largest multiple of Y less than or equal to X.  If Y is negative, then
 the result will be less than or equal to zero).  To illustrate this, here
 are the results of modding C<-9> through C<9> with C<4>:
 
-    when X is     -9 -8 -7 -6 -5 -4 -3 -2 -1  0  1  2  3  4  5  6  7  8  9
-    the result is  3  0  1  2  3  0  1  2  3  0  1  2  3  0  1  2  3  0  1
+    when X is  -9 -8 -7 -6 -5 -4 -3 -2 -1  0  1  2  3  4  5  6  7  8  9
+    result is   3  0  1  2  3  0  1  2  3  0  1  2  3  0  1  2  3  0  1
 
 And here is C<-9> through C<9> modded with C<-4>:
 
-    when X is     -9 -8 -7 -6 -5 -4 -3 -2 -1  0  1  2  3  4  5  6  7  8  9
-    the result is -1  0 -3 -2 -1  0 -3 -2 -1  0 -3 -2 -1  0 -3 -2 -1  0 -3 
+    when X is  -9 -8 -7 -6 -5 -4 -3 -2 -1  0  1  2  3  4  5  6  7  8  9
+    result is  -1  0 -3 -2 -1  0 -3 -2 -1  0 -3 -2 -1  0 -3 -2 -1  0 -3 
 
 From this we can see a positive Y constrains X to a range from C<0> to 
 C<(Y - 1)> that wraps around and a negative Y constrains X to a range from
@@ -1294,6 +1294,10 @@ that can be assigned to).
 
     $x **= $y; #$x is now 2 ** 8 or 256
 
+=head3 See also
+
+L<X = Y> and L<X ** Y>
+
 =head2 X += Y
 
 This is the addition assignment operator.  It is equivalent to 
@@ -1310,6 +1314,10 @@ assigned to).
     my $y = 8;
 
     $x += $y; #$x is now 2 + 8 or 10
+
+=head3 See also
+
+L<X = Y> and L<X + Y>
 
 =head2 X -= Y
 
@@ -1328,6 +1336,10 @@ assigned to).
 
     $x -= $y; #$x is now 2 - 8 or -6
 
+=head3 See also
+
+L<X = Y> and L<X - Y>
+
 =head2 X .= Y
 
 This is the concatenation assignment operator.  It is equivalent to 
@@ -1345,15 +1357,117 @@ that can be assigned to).
 
     $x .= $y; #$x is now 2 . 8 or "28"
 
+=head3 See also
+
+L<X = Y> and L<X . Y>
+
 =head2 X *= Y
+
+This is the multiplication assignment operator.  It is equivalent to 
+
+    X = X * Y
+
+That is it multiplies X by Y and then assigns the result to X.  This means
+that X must be a valid lvalue (i.e. it must be something that can be
+assigned to).
+
+=head3 Example
+
+    my $x = 2;
+    my $y = 8;
+
+    $x *= $y; #$x is now 2 * 8 or 16
+
+=head3 See also
+
+L<X = Y> and L<X * Y>
 
 =head2 X /= Y
 
+This is the division assignment operator.  It is equivalent to 
+
+    X = X / Y
+
+That is it divides X by Y and then assigns the result to X.  This means that
+X must be a valid lvalue (i.e. it must be something that can be assigned
+to).
+
+=head3 Example
+
+    my $x = 2;
+    my $y = 8;
+
+    $x /= $y; #$x is now 2 / 8 or 0.25
+
+=head3 See also
+
+L<X = Y> and L<X / Y>
+
 =head2 X %= Y
+
+This is the modulo assignment operator.  It is equivalent to 
+
+    X = X % Y
+
+That is it computes the remainder of X divided by Y and then assigns the
+result to X.  This means that X must be a valid lvalue (i.e. it must be
+something that can be assigned to).
+
+=head3 Example
+
+    my $x = 2;
+    my $y = 8;
+
+    $x %= $y; #$x is now 2 % 8 or 2
+
+=head3 See also
+
+L<X = Y> and L<X % Y>
 
 =head2 X x= Y
 
+This is the scalar repetition assignment operator.  It is equivalent to 
+
+    X = X x Y
+
+That is it creates a string made up of X repeated Y times and assigns the
+result to X.  This means that X must be a valid lvalue (i.e. it must be
+something that can be assigned to).
+
+Note: this only works for the scalar repetition operator; the list
+repetition operator (L<(X) x Y>) will not work in this context.
+
+=head3 Example
+
+    my $x = 2;
+    my $y = 8;
+
+    $x x= $y; #$x is now 2 x 8 or "22222222"
+
+=head3 See also
+
+L<X = Y> and L<X x Y>
+
 =head2 X &= Y
+
+This is the bitwise and assignment operator.  It is equivalent to 
+
+    X = X & Y
+
+That is it ands together X and Y and then assigns the result to X.  This
+means that X must be a valid lvalue (i.e. it must be something that can be
+assigned to).
+
+=head3 Example
+
+    my $x = 2;
+    my $y = 8;
+
+    $x &= $y; #$x is now 2 & 8 or 0
+
+=head3 See also
+
+L<X = Y> and L<X & Y>
 
 =head2 X |= Y
 
