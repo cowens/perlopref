@@ -485,6 +485,20 @@ L<< C<warnings> >> are turned on).
 
     my $x = 100 - 58; #$x is now 42
 
+=head2 X . Y
+
+=head3 Description
+
+This is the concatenation operator.  It coerces its arguments to strings,
+then returns a new string that begins with X and ends with Y.  It forces
+scalar context on X and Y.
+
+=head3 Example
+
+    my @a = (1 .. 10);
+    my $x = "foo" . "bar"; #$x is now "foobar"
+    my $y = "the number of elements in \@a is" . @a;
+
 =head2 X << Y
 
 =head3 Description
@@ -1329,7 +1343,7 @@ that can be assigned to).
     my $x = 2;
     my $y = 8;
 
-    $x **= $y; #$x is now 2 . 8 or "28"
+    $x .= $y; #$x is now 2 . 8 or "28"
 
 =head2 X *= Y
 
