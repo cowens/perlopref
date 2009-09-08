@@ -1471,13 +1471,110 @@ L<X = Y> and L<X & Y>
 
 =head2 X |= Y
 
+This is the bitwise or assignment operator.  It is equivalent to 
+
+    X = X | Y
+
+That is it ors together X and Y and then assigns the result to X.  This
+means that X must be a valid lvalue (i.e. it must be something that can be
+assigned to).
+
+=head3 Example
+
+    my $x = 2;
+    my $y = 8;
+
+    $x |= $y; #$x is now 2 & 8 or 10
+
+=head3 See also
+
+L<X = Y> and L<X | Y>
+
 =head2 X ^= Y
+
+This is the bitwise xor assignment operator.  It is equivalent to 
+
+    X = X ^ Y
+
+That is it xors together X and Y and then assigns the result to X.  This
+means that X must be a valid lvalue (i.e. it must be something that can be
+assigned to).
+
+=head3 Example
+
+    my $x = 2;
+    my $y = 8;
+
+    $x ^= $y; #$x is now 2 & 8 or 10
+
+=head3 See also
+
+L<X = Y> and L<X ^ Y>
 
 =head2 X <<= Y
 
+This is the left bit-shift assignment operator.  It is equivalent to 
+
+    X = X << Y
+
+That is it bit-shifts X Y places to the left and then assigns the result to
+X.  This means that X must be a valid lvalue (i.e. it must be something that
+can be assigned to).
+
+=head3 Example
+
+    my $x = 2;
+    my $y = 8;
+
+    $x <<= $y; #$x is now 2 << 8 or 512
+
+=head3 See also
+
+L<X = Y> and L<X << Y>
+
 =head2 X >>= Y
 
+This is the right bit-shift assignment operator.  It is equivalent to 
+
+    X = X >> Y
+
+That is it bit-shifts X Y places to the right and then assigns the result to
+X.  This means that X must be a valid lvalue (i.e. it must be something that
+can be assigned to).
+
+=head3 Example
+
+    my $x = 8;
+    my $y = 2;
+
+    $x &= $y; #$x is now 8 & 2 or 2
+
+=head3 See also
+
+L<X = Y> and L<X >> Y>
+
 =head2 X &&= Y
+
+This is the logical and assignment operator.  It is equivalent to 
+
+    X = X && Y
+
+That is it assigns Y to X if both X and Y are true or X is true and Y is
+false.  If X is false it assigns X to itself.  This means that X must be a
+valid lvalue (i.e. it must be something that can be assigned to).
+
+=head3 Example
+
+    my $x = 2;
+    my $y = 8;
+
+    $x &&= $y; #$x is now 2 && 8 or 8
+    $x &&= 0;  #$x is now 8 && 0 or 0
+    $x &&= 8;  #$x is now 0 && 8 or 0
+
+=head3 See also
+
+L<X = Y> and L<X && Y>
 
 =head2 X ||= Y
 
