@@ -1578,6 +1578,42 @@ L<X = Y> and L<X && Y>
 
 =head2 X ||= Y
 
+This is the logical or assignment operator.  It is equivalent to 
+
+    X = X || Y
+
+That is it logically ors together X and Y and then assigns the result to X.
+This means that X must be a valid lvalue (i.e. it must be something that can
+be assigned to).  It was often used in the past to assign a value if the
+variable did not already have a value:
+
+    my $x;
+
+    #intervening code that might set $x or might leave it undefined
+
+    $x ||= 10; #make sure $x gets set to a default value
+
+This has a problem though: if C<$x> is C<0> or C<""> then it will get
+overwritten with C<10>.  The defined-or assignment operator (L<X //= Y>)
+does not have this problem and should, generally, be used for this purpose
+instead.  Of course, if you desire any false value be overwritten, then this
+is the right operator to use.
+
+=head3 Example
+
+    my $x = 2;
+    my $y = 8;
+    my $z;
+
+    $x ||= $y; #$x is now 2 || 8 or 2
+    $y ||= $x; #$y is now 8 || 2 or 8
+
+    my $z ||= $x + $y; #$z is now undef || (2 + 8) or 10
+
+=head3 See also
+
+L<X = Y>, L<X || Y>, and L<X //= Y>
+
 =head2 X //= Y
 
 =head2 X, Y
