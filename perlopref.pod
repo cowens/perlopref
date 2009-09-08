@@ -1052,8 +1052,9 @@ L<perlop/Integer Arithmetic> and L<perlop/Bitwise String Operators>.
 
 =head3 Description
 
-This is the high-precedence logical and operator.  It returns the Y if X and
-Y both evaluate to a true value, otherwise it returns X.
+This is the high-precedence logical and operator.  It returns Y if X and
+Y both evaluate to a true value or they both evaluate to a false value,
+otherwise it returns X.
 
 It binds more tightly than the low-precedence logical and operator:
 
