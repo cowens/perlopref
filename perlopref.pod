@@ -202,12 +202,20 @@ L<< C<warnings> >> are turned on).
 This is the high-precedence logical negation operator.  It performs logical
 negation, i.e., "not".  There is a low-precedence version C<not>.
 
+It is occasionally used in pairs (C<!!>) to convert any false value to 
+C<""> and any true value to C<1>.  
+
 =head3 Example
 
-    my $m = !5;     #$m is now the empty string ('')
-    my $n = !0;     #$n is now 1
-    my $o = !'';    #$o is now 1
-    my $p = !undef; #$p is now 1
+    my $m = !5;      #$m is now the empty string ('')
+    my $n = !0;      #$n is now 1
+    my $o = !'';     #$o is now 1
+    my $p = !undef;  #$p is now 1
+
+    my $q = !!5;     #$q is now 1
+    my $r = !!0;     #$r is now ""
+    my $s = !!'';    #$s is now ""
+    my $t = !!undef; #$t is now ""
 
 =head2 ~X
 
@@ -1615,6 +1623,35 @@ is the right operator to use.
 L<X = Y>, L<X || Y>, and L<X //= Y>
 
 =head2 X //= Y
+
+This is the defined-or assignment operator.  It is equivalent to 
+
+    X = X // Y
+
+It assigns Y to X if X is not already defined.  This means that X must be a
+valid lvalue (i.e. it must be something that can be assigned to).
+
+It is commonly used to ensure that a variable has a value:
+
+    my $x;
+
+    #intervening code that might set $x or might leave it undefined
+
+    $x //= 10; #make sure $x gets set to a default value
+
+
+=head3 Example
+
+    my $x = 2;
+    my $y = 8;
+    my $z;
+
+    $x //= $y; #$x is now 2 // 8 or 2
+    $z //= $x; #$z is now undef // 2 or 2
+
+=head3 See also
+
+L<X = Y>, L<X // Y>, L<X || Y>
 
 =head2 X, Y
 
