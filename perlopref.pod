@@ -12,7 +12,7 @@
     left              * / % x
     left              + - .
     left              << >>
-    nonassoc          named unary operators
+    nonassoc          named unary operators, filetest operators
     nonassoc          < > <= >= lt gt le ge
     nonassoc          == != <=> eq ne cmp ~~
     left              &
@@ -566,6 +566,60 @@ L<< C<warnings> >> are turned on).
 
     my $x = 0x00_FF_00_FF >> 8; #$x is now 0x00_00_FF_00
     my $y = 12 >> 1;            #$y is now 6
+
+=head2 -r
+
+=head2 -w
+
+=head2 -x
+
+=head2 -o
+
+=head2 -R
+
+=head2 -W
+
+=head2 -X
+
+=head2 -O
+
+=head2 -e
+
+=head2 -z
+
+=head2 -s
+
+=head2 -f
+
+=head2 -d
+
+=head2 -l
+
+=head2 -p
+
+=head2 -S
+
+=head2 -b
+
+=head2 -c
+
+=head2 -t
+
+=head2 -u
+
+=head2 -g
+
+=head2 -k
+
+=head2 -T
+
+=head2 -B
+
+=head2 -M
+
+=head2 -A
+
+=head2 -C
 
 =head2 X < Y
 
