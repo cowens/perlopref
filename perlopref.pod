@@ -1657,25 +1657,95 @@ L<X = Y>, L<X // Y>, L<X || Y>
 
 =head3 Description
 
+This is the comma operator.  In list context it builds a list.  In scalar
+context it evaluates each item and returns the value of the last item.
+
+Due to the fact that the assignment operator has higher precedence, you must
+surround the list with parentheses.  For example,
+
+    my @list = 1, 2, 3;
+
+says the same thing as
+
+    (my @list = 1), 2, 3
+
+To get the desired behaviour you must say
+
+    my @list = (1, 2, 3);
+
+Function calls, on the other hand, have a lower precedence, so you can say
+
+    print 1, 2, 3, "\n";
+
+A trailing comma does not add a new element to a list, to the lists
+C<(1,2,3)> and C<(1,2,3,)>) are identical.
+
 =head3 Example
 
-
+    my @a = (1, 2, 3);          #@a is now (1, 2, 3)
+    my $x = ("a", "b", "c");    #$x is now "c"
+    my $y = (++$x, ++$x, ++$x); #$y is now "f"
 
 =head2 X => Y
 
 =head3 Description
 
+This is the fat comma operator.  It behaves much in the same way as the
+comma operator (creates lists in list context, returns the last value in
+scalar context), but it has a special property: it stringifies X if X is a
+bareword (i.e. it matches C</^[a-zA-Z_]\w+$/>).  It is most often used when
+creating hashes because the arrow like appearance makes it easy to identify
+the key versus the value and the auto-stringifing property makes the keys
+look cleaner:
+
+    my %hash = (
+        key1 => "value1",
+        key2 => "value2",
+        key3 => "value3",
+    );
+
+That statement is functionally identical to
+
+    my %hash = (
+        "key1", "value1", 
+        "key2", "value2", 
+        "key3", "value3", 
+    );
+
 =head3 Example
 
+    #%x will contain the list ("a", 1, "b", 2, "c", 3)
+    my %x = (
+        a => 1,
+        b => 2,
+        c => 3,
+    );
 
+    #%y will contain the list ("key with spaces", 1, "b", 1, "c", 1)
+    my %y = (
+        "key with spaces" => 1,
+        b                 => 1,
+        c                 => 1,
+    );
+    
 
 =head2 not X
 
 =head3 Description
 
+This is the low-precedence logical negation operator.  It performs logical
+negation, i.e., "not".  There is a high-precedence version C<!>.
+
 =head3 Example
 
+    my $m = not 5;      #$m is now the empty string ('')
+    my $n = not 0;      #$n is now 1
+    my $o = not '';     #$o is now 1
+    my $p = not undef;  #$p is now 1
 
+=head3 See also
+
+L<!X>
 
 =head2 X and Y
 
