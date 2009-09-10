@@ -1103,7 +1103,7 @@ evaluates to true, otherwise it returns Y.
 
 It binds more tightly than the low-precedence logical or operator:
 
-    my $x = 5 && 4; # is equivalent to my $x = (5 || 4);
+    my $x = 5 || 4; # is equivalent to my $x = (5 || 4);
 
 whereas:
 
@@ -1136,7 +1136,7 @@ purpose since it tests if X is defined, not if it is true.
 
 =head3 See also
 
-L<or>
+L<X or Y>
 
 =head2 X // Y
 
