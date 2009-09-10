@@ -1024,8 +1024,8 @@ L<perlop/Integer Arithmetic> and L<perlop/Bitwise String Operators>.
 
 =head3 Description
 
-This is the bitwise xor operator.  It xors together the individual bits of X
-and Y.  The truth table for xor is:
+This is the bitwise exclusive-or operator.  It exclusive-ors together the
+individual bits of X and Y.  The truth table for exclusive-or is:
 
      X Y   R
     -----+---
@@ -1038,10 +1038,10 @@ That is, it sets the result bit to 1 if X or Y is set, or 0 if both or
 neither is set.  This operation is done for every bit in X and Y.  
 
 If both operands are strings, they are considered character by character.
-The result is determined by xoring the ordinal value of the characters, so
-C<"a" ^ "b"> is equivalent to C<chr(ord("a") ^ ord("b"))>.  If X and Y are
-different sizes, then the shorter item is treated as if it had additional
-bits that are set to 0.
+The result is determined by exclusive-oring the ordinal value of the
+characters, so C<"a" ^ "b"> is equivalent to C<chr(ord("a") ^ ord("b"))>.
+If X and Y are different sizes, then the shorter item is treated as if it
+had additional bits that are set to 0.
 
 =head3 Example
 
@@ -1848,5 +1848,19 @@ value).
 L<X || Y>
 
 =head2 X xor Y
+
+=head3 Description
+
+This is the low-precedence logical exclusive-or operator (there is no
+high-precedence exclusive-or operator).  It returns X if only X is true, It
+returns Y is only Y is true, otherwise (both true or both false) it returns
+an empty string.
+
+=head3 Example
+
+    my $m = (0 xor 0); #$m is now ""
+    my $n = (1 xor 0); #$n is now 1
+    my $o = (0 xor 1); #$o is now 1
+    my $p = (1 xor 1); #$p is now ""
 
 =cut
