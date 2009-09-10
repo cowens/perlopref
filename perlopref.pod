@@ -1763,24 +1763,90 @@ L<!X>
 
 =head3 Description
 
+This is the low-precedence logical and operator.  It returns X if X
+evaluates to false, otherwise it returns Y.
+
+It binds less tightly than the high-precedence logical and operator:
+
+    my $y = 5 and 4; # is equivalent to (my $x = 5) and 4;
+
+whereas:
+
+    my $x = 5 && 4; # is equivalent to my $x = (5 && 4);
+
+It is most commonly used in conditional statements such as C<if>, C<unless>,
+C<while>.  But it is also occasionally used for its short-circuiting affect:
+
+    do_this() and do_that() and do_last();
+
+is functionally the same as
+
+    if (do_this()) {
+        if (do_that()) {
+            do_last();
+        }
+    }
+
 =head3 Example
 
+    my $w = "";
+    my $x = 0;
+    my $y = 1;
+    my $z = "foo";
 
+    #not the use of parentheses vs this example in &&
+    print(($w and $y), "\n"); #prints "\n"
+    print(($x and $y), "\n"); #prints "0\n"
+    print(($y and $z), "\n"); #prints "foo\n"
+    print(($z and $y), "\n"); #prints "1\n"
+
+=head3 See also
+
+L<X && Y>
 
 =head2 X or Y
 
 =head3 Description
 
+This is the low-precedence logical or operator.  It returns the X if X
+evaluates to true, otherwise it returns Y.
+
+It binds less tightly than the high-precedence logical or operator:
+
+    my $y = 5 or 4; # is equivalent to (my $x = 5) or 4;
+
+whereas:
+
+    my $x = 5 && 4; # is equivalent to my $x = (5 || 4);
+
+It is most commonly used in conditional statements such as C<if>, C<unless>,
+C<while>.  It is also often used for its short-circuiting behavior:
+
+    open my $fh, "<", $filename
+        or die "could not open $filename: $!";
+
+That code will not run the C<die> unless the C<open> fails (returns a false
+value).
+
 =head3 Example
 
+    my $w = "";
+    my $x = 0;
+    my $y = 1;
+    my $z = "foo";
 
+    #not the use of parentheses vs this example in ||
+    print(($w or $x), "\n"); #prints "0\n";
+    print(($x or $w), "\n"); #prints "\n";
+    print(($w or $y), "\n"); #prints "1\n"
+    print(($x or $y), "\n"); #prints "1\n"
+    print(($y or $z), "\n"); #prints "1\n"
+    print(($z or $y), "\n"); #prints "foo\n"
+
+=head3 See also
+
+L<X || Y>
 
 =head2 X xor Y
-
-=head3 Description
-
-=head3 Example
-
-
 
 =cut
