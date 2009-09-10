@@ -217,6 +217,10 @@ C<""> and any true value to C<1>.
     my $s = !!'';    #$s is now ""
     my $t = !!undef; #$t is now ""
 
+=head3 See also
+
+L<not X>
+
 =head2 ~X
 
 =head3 Description
@@ -237,7 +241,7 @@ C<warnings> >> are turned on).
 
 =head3 See also
 
-L<Bitwise String Operators> and L<Integer Arithmetic> in L<perlop>
+L<perlop/Bitwise String Operators> and L<perlop/Integer Arithmetic> 
 
 =head2 \X
 
@@ -1086,6 +1090,10 @@ C<while>.
     print $y && $z, "\n"; #prints "foo\n"
     print $z && $y, "\n"; #prints "1\n"
 
+=head3 See also
+
+L<X and Y>
+
 =head2 X || Y
 
 =head3 Description
@@ -1125,6 +1133,10 @@ purpose since it tests if X is defined, not if it is true.
     print $x || $y, "\n"; #prints "1\n"
     print $y || $z, "\n"; #prints "1\n"
     print $z || $y, "\n"; #prints "foo\n"
+
+=head3 See also
+
+L<or>
 
 =head2 X // Y
 
