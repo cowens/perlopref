@@ -108,10 +108,10 @@ string contexts since it was set, and has a value that is not the empty
 string and matches the pattern C</^[a-zA-Z]*[0-9]*\z/>, the increment is
 done as a string, preserving each character within its range, with carry:
 
-    print ++($foo = '99');      # prints '100'
-    print ++($foo = 'a0');      # prints 'a1'
-    print ++($foo = 'Az');      # prints 'Ba'
-    print ++($foo = 'zz');      # prints 'aaa'
+    print ++($foo = "99");      # prints "100"
+    print ++($foo = "a0");      # prints "a1"
+    print ++($foo = "Az");      # prints "Ba"
+    print ++($foo = "zz");      # prints "aaa"
 
 C<undef> is always treated as numeric, and in particular is changed to C<0>
 before incrementing (so that a post-increment of an undef value will return
@@ -207,14 +207,14 @@ C<""> and any true value to C<1>.
 
 =head3 Example
 
-    my $m = !5;      #$m is now the empty string ('')
+    my $m = !5;      #$m is now the empty string ("")
     my $n = !0;      #$n is now 1
-    my $o = !'';     #$o is now 1
+    my $o = !"";     #$o is now 1
     my $p = !undef;  #$p is now 1
 
     my $q = !!5;     #$q is now 1
     my $r = !!0;     #$r is now ""
-    my $s = !!'';    #$s is now ""
+    my $s = !!"";    #$s is now ""
     my $t = !!undef; #$t is now ""
 
 =head3 See also
@@ -335,7 +335,7 @@ If Y is an expression rather than a search pattern, substitution, or
 transliteration, it is interpreted as a search pattern at run time. Note
 that this means that its contents will be interpolated twice, so
 
-  '\\' =~ q'\\';
+  "\\" =~ "\\";
 
 is not ok, as the regex engine will end up trying to compile the pattern
 C<\>, which it will consider a syntax error.
@@ -1809,9 +1809,9 @@ negation, i.e., "not".  There is a high-precedence version C<!>.
 
 =head3 Example
 
-    my $m = not 5;      #$m is now the empty string ('')
+    my $m = not 5;      #$m is now the empty string ("")
     my $n = not 0;      #$n is now 1
-    my $o = not '';     #$o is now 1
+    my $o = not "";     #$o is now 1
     my $p = not undef;  #$p is now 1
 
 =head3 See also
