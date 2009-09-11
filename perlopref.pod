@@ -1604,7 +1604,7 @@ can be assigned to).
 
 =head3 See also
 
-L<X = Y> and L<X << Y>
+L<X = Y> and L<<< X << Y >>>
 
 =head2 X >>= Y
 
@@ -1625,7 +1625,7 @@ can be assigned to).
 
 =head3 See also
 
-L<X = Y> and L<X >> Y>
+L<X = Y> and L<<< X >> Y >>>
 
 =head2 X &&= Y
 
