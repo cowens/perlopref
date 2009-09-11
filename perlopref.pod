@@ -140,10 +140,10 @@ auto-increment operator, both values would be C<5>.
 =head3 Example
 
     my $x = 4;
-    my $y = ++$x; #$x is now 5 and $y is now 4
+    my $y = $x++; #$x is now 5 and $y is now 4
 
     my $s = "a";
-    my $t = ++$s; #$s is now "b" and $t is now "a"
+    my $t = $s++; #$s is now "b" and $t is now "a"
 
 =head2 --X
 
@@ -177,7 +177,7 @@ C<warnings> >> are turned on).
 =head3 Example
 
     my $x = 5;
-    my $y = --$x; #$x and $y are now 4
+    my $y = $x--; #$x is now 4 and $y is now 5
 
 =head2 X**Y
 
@@ -983,6 +983,10 @@ commonly seen used with the C<sort> function:
 
 This is the smartmatch operator.  In 5.10 and 5.10.1 it has different
 behavior.  See L<perlsyn/"Smart matching in detail"> for more detail.
+
+Prior to 5.10, it was sometimes used to mean C<~(~X)> which has the affect
+of forcing scalar context on X.  You should use the C<scalar> function for
+that purpose instead.
 
 =head3 Example
 
