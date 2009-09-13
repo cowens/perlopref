@@ -175,8 +175,8 @@ When X is an expression, this is the indexing array dereferencing operator.
 If X evaluates to an array reference then it returns value of the Yth item
 of the referenced array.  If X does not evaluate to an array reference a
 runtime error occurs.  If X is a simple scalar variable the braces are
-unnecessary.  The use of this operator is discouraged, see the L<< /X->Y >>
-operator for a better solution.
+unnecessary.  The use of this operator is discouraged, see the 
+L<< /X->[Y] >> operator for a better solution.
 
 If strict is turned off, and it shouldn't be, and X evaluates to a string
 then C<${X}[Y]> returns the Yth item from the array whose name is the same
@@ -196,7 +196,45 @@ as the string.
 
 =head3 See also
 
-L</\X>, L<< /X->Y >>, L<perlreftut>, and L<perlref>
+L</\X>, L<< /X->[Y] >>, L<perlreftut>, and L<perlref>
+
+=head2 ${X}{Y}
+
+=head3 Class
+
+This belongs to L<perlop/Terms and List Operators (Leftward)>.
+
+=head3 Description
+
+If X is the name of a hash variable, then this is just another way of saying
+C<$X{Y}>.
+
+When X is an expression, this is the indexing hash dereferencing operator.
+If X evaluates to an hash reference then it returns value associated with
+the key Y of the referenced hash.  If X does not evaluate to an hash
+reference a runtime error occurs.  If X is a simple scalar variable the
+braces are unnecessary.  The use of this operator is discouraged, see the
+L<< /X->{Y} >> operator for a better solution.
+
+If strict is turned off, and it shouldn't be, and X evaluates to a string
+then C<${X}{Y}> returns the value associated with the key Y from the hash
+whose name is the same as the string.
+
+=head3 Example
+
+    my %h    = (a => 1, b => 2, c => 3);
+    my $href = \%h;
+    
+    ${$href}{a} = 4; #%h is now (a => 4, b => 2, c => 3);
+
+    no strict "refs";
+
+    my $bad = "h";
+    ${$bad}{d} = 4;  #%h is now (a => 4, b => 2, c => 3, d => 4);
+
+=head3 See also
+
+L</\X>, L<< /X->{Y} >>, L<perlreftut>, and L<perlref>
 
 =head2 @{X}
 
@@ -214,9 +252,9 @@ variable would be ambiguous:
     my $x = "@{a}bar"; #$x is now "1 2 3bar"
 
 When X is an expression, this is the array dereferencing operator.  If X
-evaluates to a array reference then the value of the referenced item it
+evaluates to a array reference then the value of the referenced item is
 returned.  If X does not evaluate to a array reference a runtime error
-occurs.  If X is a simple array variable the braces are unnecessary.
+occurs.  If X is a simple scalar variable the braces are unnecessary.
 
 If strict is turned off, and it shouldn't be, and X evaluates to a string
 then @{X} returns an array variable whose name is the same as the string.
@@ -228,11 +266,48 @@ then @{X} returns an array variable whose name is the same as the string.
     my @b    = ($aref);
 
     @$aref      = (1, 2, 3); #@a is now (1, 2, 3)
+    @{$b[0]}    = (4, 5, 6); #@a is now (4, 5, 6)
 
     no strict "refs";
 
     my $bad = "a";
     @{$bad}[0,1] = 8;     #$x is now 8
+
+=head3 See also
+
+L</\X>, L<perlreftut>, and L<perlref>
+
+=head2 %{X}
+
+=head3 Class
+
+This belongs to L<perlop/Terms and List Operators (Leftward)>.
+
+=head3 Description
+
+If X is the name of an array variable then this is just another way of
+saying %X.
+
+When X is an expression, this is the hash dereferencing operator.  If X
+evaluates to a hash reference then the value of the referenced item is
+returned.  If X does not evaluate to a hash reference a runtime error
+occurs.  If X is a simple scalar variable the braces are unnecessary.
+
+If strict is turned off, and it shouldn't be, and X evaluates to a string
+then @{X} returns an array variable whose name is the same as the string.
+
+=head3 Example
+
+    my %h;
+    my $href = \%h;
+    my @a    = ($href);
+
+    %$href   = (a => 1); #%h is now (a => 1)
+
+    no strict "refs";
+
+    my $bad = "h";
+    @{$bad}{"c", "d"} = (3, 4); #%h is now (a => 1, c => 3, d => 4)
 
 =head3 See also
 
