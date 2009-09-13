@@ -65,7 +65,7 @@ then C<${X}> returns a scalar variable whose name is the same as the string.
 
 =head3 See also
 
-L<\X>, L<perlreftut>, and L<perlref>
+L</\X>, L<perlreftut>, and L<perlref>
 
 =head2 ${X}[Y]
 
@@ -78,7 +78,7 @@ When X is an expression, this is the indexing array dereferencing operator.
 If X evaluates to an array reference then it returns value of the Yth item
 of the referenced array.  If X does not evaluate to an array reference a
 runtime error occurs.  If X is a simple scalar variable the braces are
-unnecessary.  The use of this operator is discouraged, see the L<< X->Y >>
+unnecessary.  The use of this operator is discouraged, see the L<< /X->Y >>
 operator for a better solution.
 
 If strict is turned off, and it shouldn't be, and X evaluates to a string
@@ -99,7 +99,7 @@ as the string.
 
 =head3 See also
 
-L<\X>, L<< X->Y >>, L<perlreftut>, and L<perlref>
+L</\X>, L<< /X->Y >>, L<perlreftut>, and L<perlref>
 
 =head2 @{X}
 
@@ -135,7 +135,7 @@ then @{X} returns an array variable whose name is the same as the string.
 
 =head3 See also
 
-L<\X>, L<perlreftut>, and L<perlref>
+L</\X>, L<perlreftut>, and L<perlref>
 
 =head2 X[Y]
 
@@ -151,7 +151,7 @@ or array.
 
 The index Y is treated as a number, so, it is converted to a number before
 it is used use. If it cannot be converted then it is turned into C<0> (and a
-warning is thrown if L<< C<warnings> >> are turned on).
+warning is thrown if L<warnings> are turned on).
 
 =head3 Example
 
@@ -272,8 +272,8 @@ C<X = X - 1>.  The value returned is reflects the decrementing, so after the
 following code runs, C<$x> and C<$y> will be C<4>.
 
 X will be converted to a number before decrementing, and if it cannot be
-converted it will turned into C<0> (and a warning is thrown if L<<
-C<warnings> >> are turned on).
+converted it will turned into C<0> (and a warning is thrown if L<warnings>
+are turned on).
 
 =head3 Example
 
@@ -289,8 +289,8 @@ C<X = X - 1>.  The value returned is the value before decrementing, so after
 the following code runs, C<$x> will be 4 and C<$y> will be C<5>.
 
 X will be converted to a number before the operation, and if it cannot be
-converted it will turned into C<0> (and a warning is thrown if L<<
-C<warnings> >> are turned on).
+converted it will turned into C<0> (and a warning is thrown if L<warnings>
+are turned on).
 
 =head3 Example
 
@@ -307,7 +307,7 @@ not C<(-2)**4>.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 =head3 Example
 
@@ -337,7 +337,7 @@ C<""> and any true value to C<1>.
 
 =head3 See also
 
-L<not X>
+L</not X>
 
 =head2 ~X
 
@@ -350,8 +350,8 @@ are expecting a certain bit width, remember to use the C<&> operator to mask
 off the excess bits.
 
 X will be converted to a number before the operation, and if it cannot be
-converted it will turned into C<0> (and a warning is thrown if L<<
-C<warnings> >> are turned on).
+converted it will turned into C<0> (and a warning is thrown if L<warnings>
+are turned on).
 
 =head3 Example
 
@@ -393,7 +393,7 @@ reference to X.
 
 =head3 See also
 
-L<< X -> Y >> in L<perlopref>, L<perlreftut>, and L<perlref>
+L<< /X -> Y >> in L<perlopref>, L<perlreftut>, and L<perlref>
 
 =head2 +X
 
@@ -425,7 +425,7 @@ opposite sign.
 
 In all other cases, X will be converted to a number before the operation,
 and if it cannot be converted it will turned into C<0> (and a warning is
-thrown if L<< C<warnings> >> are turned on).
+thrown if L<warnings> are turned on).
 
 =head3 Example
 
@@ -446,8 +446,8 @@ This is the binding operator.  It applies a regex match (C<m//>),
 substitution (C<s///>), or transliteration (C<tr///> or C<y///>) Y against a
 string X.  When used in scalar context, the return value generally indicates
 the success of the operation.  Behavior in list context depends on the
-particular operator.  See L</"Regexp Quote-Like Operators"> for details and
-L<perlretut> for examples using these operators.
+particular operator.  See L<perlop/"Regexp Quote-Like Operators"> for
+details and L<perlretut> for examples using these operators.
 
 If Y is an expression rather than a search pattern, substitution, or
 transliteration, it is interpreted as a search pattern at run time. Note
@@ -489,7 +489,7 @@ but the return is logically negated.
 
 =head3 See also
 
-L<< C<=~> >>
+L</X =~ Y>
 
 =head2 X * Y
 
@@ -499,7 +499,7 @@ This is the multiplication operator.  It returns X multiplied by Y.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 =head3 Example
 
@@ -513,7 +513,7 @@ This is the division operator.  It divides X by Y.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 =head3 Example
 
@@ -553,14 +553,13 @@ is a certain integer that makes the result have the same sign as Y).  For
 example, on 32-bit systems C<4.5 % (2 ** 32 - 1)> is C<4>, but 
 C<4.5 % 2 ** 32> is C<4.5>.
 
-Note: when the L<< C<integer> >> pragma is in scope C<%> gives you direct
-access to the modulo operator as implemented by your C compiler.  This
-operator is not as well defined for negative operands, but it will
-execute faster.
+Note: when the L<integer> pragma is in scope C<%> gives you direct access to
+the modulo operator as implemented by your C compiler.  This operator is not
+as well defined for negative operands, but it will execute faster.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 =head3 Example
 
@@ -579,8 +578,8 @@ a string made up of X repeated Y times.  When X is a list it returns
 a list made up of X repeated Y times.
 
 Y will be converted to a number before the operation, and if it cannot be
-converted it will turned into C<0> (and a warning is thrown if L<<
-C<warnings> >> are turned on).
+converted it will turned into C<0> (and a warning is thrown if L<warnings>
+are turned on).
 
 =head3 Example
 
@@ -595,7 +594,7 @@ This is the addition operator.  It returns the result of X plus Y.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 =head3 Example
 
@@ -609,7 +608,7 @@ This is the subtraction operator.  It returns the result of X minus Y.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 =head3 Example
 
@@ -638,18 +637,18 @@ X Y places to the left.  If X is not an integer it will be converted into
 one before the operation begins.  
 
 New bits added to the right side are all C<0>.  Overflowing the integer type
-on you platform (i.e. creating a number too large to store in your platform's
-integer type) results in behavior that is not well defined (i.e. it is 
-platform specific).  When Y is negative the results are also not well 
-defined.  This is because the left bit-shift operator is implemented by the 
-native C compiler's left bit-shift operator (and those operations are not 
+on you platform (i.e. creating a number too large to store in your
+platform's integer type) results in behavior that is not well defined (i.e.
+it is platform specific).  When Y is negative the results are also not well
+defined.  This is because the left bit-shift operator is implemented by the
+native C compiler's left bit-shift operator (and those operations are not
 defined by ISO C).
 
 Shifting 1 bit to the left is the same as multiplying the number by 2.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 =head3 Example
 
@@ -665,11 +664,11 @@ L<< C<warnings> >> are turned on).
 
 =head3 Description
 
-This is the right-bit shift operator.  It shift bits that make up the integer
-X Y places to the right.  If X is not an integer it will be converted into 
-one before the operation begins.  Bits shifted past the rightmost edge
-are lost.  New bits added to the left side are all 0.  Shifting to the right
-one bit is the same as an integer division by 2.
+This is the right-bit shift operator.  It shift bits that make up the
+integer X Y places to the right.  If X is not an integer it will be
+converted into one before the operation begins.  Bits shifted past the
+rightmost edge are lost.  New bits added to the left side are all 0.
+Shifting to the right one bit is the same as an integer division by 2.
 
 When Y is negative the results are not well defined (i.e. platform
 specific).  This is because the right bit-shift operator is implemented by
@@ -678,7 +677,7 @@ by ISO C).
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 =head3 Example
 
@@ -749,7 +748,7 @@ Y.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 =head3 Example
 
@@ -773,7 +772,7 @@ Y.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 =head3 Example
 
@@ -797,7 +796,7 @@ X is greater than to Y.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 =head3 Example
 
@@ -821,7 +820,7 @@ X is greater than to Y.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 =head3 Example
 
@@ -938,7 +937,7 @@ as the same number.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 Important note: the numeric equality operator should not be used with
 floating point numbers as the error introduced by rounding may cause the
@@ -980,7 +979,7 @@ evaluate to the same numeric value as Y.
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 Important note: the numeric equality operator should not be used with
 floating point numbers as the error introduced by rounding may cause the
@@ -1026,7 +1025,7 @@ combined with the C<sort> function:
 
 Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
-L<< C<warnings> >> are turned on).
+L<warnings> are turned on).
 
 =head3 Example
 
@@ -1268,7 +1267,7 @@ C<while>.
 
 =head3 See also
 
-L<X and Y>
+L</X and Y>
 
 =head2 X || Y
 
@@ -1312,7 +1311,7 @@ purpose since it tests if X is defined, not if it is true.
 
 =head3 See also
 
-L<X or Y>
+L</X or Y>
 
 =head2 X // Y
 
@@ -1347,7 +1346,7 @@ context) or the flip-flop operator (if it is in scalar context).
 
 The range operator creates a list starting with X and ending with Y (i.e. it
 is inclusive).  If Y is less than X then an empty list is returned.  If both
-X and Y are strings, then the auto-magical behavior of L<X++> is used to
+X and Y are strings, then the auto-magical behavior of L</X++> is used to
 generate the list.
 
 The flip-flop operator returns false as long as X is false, once X becomes
@@ -1383,19 +1382,19 @@ in which case it will return true and then false on the next test.
 
 =head3 Description
 
-This is another form of the range/flip flop operator (L<X .. Y>).  Its
+This is another form of the range/flip flop operator (L</X .. Y>).  Its
 meaning is context dependent.
 
 In list context it creates a list starting with X and ending with Y (i.e. it
 is inclusive).  If Y is less than X then an empty list is returned.  If both
-X and Y are strings, then the auto-magical behavior of L<X++> is used to
+X and Y are strings, then the auto-magical behavior of L</X++> is used to
 generate the list.
 
 In scalar context it returns false as long as X is false, once X becomes
 true it returns true until I<after> Y is true, at which time it returns
 false.  Each flip-flop operator keeps track of its own state separately from
 the other flip-flop operators.  It only evaluates X or Y each time it
-called, unlike L<X .. Y> which evaluates both X and Y each time it is
+called, unlike L</X .. Y> which evaluates both X and Y each time it is
 called.
 
 =head3 Example
@@ -1493,7 +1492,7 @@ that can be assigned to).
 
 =head3 See also
 
-L<X = Y> and L<X ** Y>
+L</X = Y> and L</X ** Y>
 
 =head2 X += Y
 
@@ -1514,7 +1513,7 @@ assigned to).
 
 =head3 See also
 
-L<X = Y> and L<X + Y>
+L</X = Y> and L</X + Y>
 
 =head2 X -= Y
 
@@ -1535,7 +1534,7 @@ assigned to).
 
 =head3 See also
 
-L<X = Y> and L<X - Y>
+L</X = Y> and L</X - Y>
 
 =head2 X .= Y
 
@@ -1556,7 +1555,7 @@ that can be assigned to).
 
 =head3 See also
 
-L<X = Y> and L<X . Y>
+L</X = Y> and L</X . Y>
 
 =head2 X *= Y
 
@@ -1577,7 +1576,7 @@ assigned to).
 
 =head3 See also
 
-L<X = Y> and L<X * Y>
+L</X = Y> and L</X * Y>
 
 =head2 X /= Y
 
@@ -1598,7 +1597,7 @@ to).
 
 =head3 See also
 
-L<X = Y> and L<X / Y>
+L</X = Y> and L</X / Y>
 
 =head2 X %= Y
 
@@ -1619,7 +1618,7 @@ something that can be assigned to).
 
 =head3 See also
 
-L<X = Y> and L<X % Y>
+L</X = Y> and L</X % Y>
 
 =head2 X x= Y
 
@@ -1632,7 +1631,7 @@ result to X.  This means that X must be a valid lvalue (i.e. it must be
 something that can be assigned to).
 
 Note: this only works for the scalar repetition operator; the list
-repetition operator (L<(X) x Y>) will not work in this context.
+repetition operator (L</(X) x Y>) will not work in this context.
 
 =head3 Example
 
@@ -1643,7 +1642,7 @@ repetition operator (L<(X) x Y>) will not work in this context.
 
 =head3 See also
 
-L<X = Y> and L<X x Y>
+L</X = Y> and L</X x Y>
 
 =head2 X &= Y
 
@@ -1664,7 +1663,7 @@ assigned to).
 
 =head3 See also
 
-L<X = Y> and L<X & Y>
+L</X = Y> and L</X & Y>
 
 =head2 X |= Y
 
@@ -1685,7 +1684,7 @@ assigned to).
 
 =head3 See also
 
-L<X = Y> and L<X | Y>
+L</X = Y> and L</X | Y>
 
 =head2 X ^= Y
 
@@ -1706,7 +1705,7 @@ assigned to).
 
 =head3 See also
 
-L<X = Y> and L<X ^ Y>
+L</X = Y> and L</X ^ Y>
 
 =head2 X <<= Y
 
@@ -1727,7 +1726,7 @@ can be assigned to).
 
 =head3 See also
 
-L<X = Y> and L<<< X << Y >>>
+L</X = Y> and L<<< /X << Y >>>
 
 =head2 X >>= Y 
 
@@ -1748,7 +1747,7 @@ can be assigned to).
 
 =head3 See also
 
-L<X = Y> and L<<< X >> Y >>>
+L</X = Y> and L<<< /X >> Y >>>
 
 =head2 X &&= Y
 
@@ -1771,7 +1770,7 @@ that can be assigned to).
 
 =head3 See also
 
-L<X = Y> and L<X && Y>
+L</X = Y> and L</X && Y>
 
 =head2 X ||= Y
 
@@ -1791,7 +1790,7 @@ variable did not already have a value:
     $x ||= 10; #make sure $x gets set to a default value
 
 This has a problem though: if C<$x> is C<0> or C<""> then it will get
-overwritten with C<10>.  The defined-or assignment operator (L<X //= Y>)
+overwritten with C<10>.  The defined-or assignment operator (L</X //= Y>)
 does not have this problem and should, generally, be used for this purpose
 instead.  Of course, if you desire any false value be overwritten, then this
 is the right operator to use.
@@ -1809,7 +1808,7 @@ is the right operator to use.
 
 =head3 See also
 
-L<X = Y>, L<X E<verbar>E<verbar> Y>, and L<X E<sol>E<sol>= Y>
+L</X = Y>, L</X E<verbar>E<verbar> Y>, and L</X E<sol>E<sol>= Y>
 
 =head2 X //= Y
 
@@ -1840,7 +1839,7 @@ It is commonly used to ensure that a variable has a value:
 
 =head3 See also
 
-L<X = Y>, L<X E<sol>E<sol> Y>, L<X E<verbar>E<verbar> Y>
+L</X = Y>, L</X E<sol>E<sol> Y>, L</X E<verbar>E<verbar> Y>
 
 =head2 X, Y
 
@@ -1934,7 +1933,7 @@ negation, i.e., "not".  There is a high-precedence version C<!>.
 
 =head3 See also
 
-L<!X>
+L</!X>
 
 =head2 X and Y
 
@@ -1979,7 +1978,7 @@ is functionally the same as
 
 =head3 See also
 
-L<X && Y>
+L</X && Y>
 
 =head2 X or Y
 
@@ -2022,7 +2021,7 @@ value).
 
 =head3 See also
 
-L<X E<verbar>E<verbar> Y>
+L</X E<verbar>E<verbar> Y>
 
 =head2 X xor Y
 
