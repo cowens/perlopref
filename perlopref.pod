@@ -30,6 +30,101 @@
 
 =head1 OPERATORS
 
+=head2 "X"
+
+=head3 Class
+
+This belongs to L<perlop/Terms and List Operators (Leftward)> and 
+L<perlop/Quote and Quote‐like Operators>.
+
+=head3 Description
+
+This is the double quote operator (aka the interpolating string operator).
+It creates a string literal out of X.  If a scalar, array, or an index into
+a array or hash is in X, the value of that variable is inserted into the
+string in place if the variable.  Arrays are formated using C<$">:
+
+    my $interpolated_value = join $", @array;
+
+To place a C<"> inside the string, you must escape it with C<\>:
+
+    my $quote = "He said \"I like quotes.\"";
+
+There are many special escapes such as C<\t> for tab and C<\n> for newline,
+as well as a generalized form of escape that uses Unicode ordinal numbers:
+
+    my $string = "Please provide references with your r\x{e9}sum\x{e9}.";
+
+Here C<\x{e9}> creates the character associated with the ordinal number 233
+(0xe9 in hexadecimal) in Unicode: LATIN SMALL LETTER E WITH ACUTE.
+
+For a full discussion of how strings work, see 
+L<perlop/Quote and Quote-like Operators>. 
+
+=head3 Example
+
+    my $name   = "World";
+    my $string = "Hello, $name!\n"; #$string is now "Hello World!\n";
+
+=head3 See also
+
+L</qq(X)>, L<perlvar/$">, L<perlop/Quote and Quote‐like Operators>
+
+=head2 qq(X)
+
+=head3 Class
+
+This belongs to L<perlop/Terms and List Operators (Leftward)> and 
+L<perlop/Quote and Quote‐like Operators>.
+
+=head3 Description
+
+This is the generalized double quote operator (aka the generalized
+interpolating string operator).  It creates a string literal out of X.  If a
+scalar, array, or an index into a array or hash is in X, the value of that
+variable is inserted into the string in place if the variable.  Arrays are
+formated using C<$">:
+
+    my $interpolated_value = join $", @array;
+
+The delimiters C<()> are chosen by the user and may consist of either
+bracketing characters (C<< qq<> >>, C<qq()>, C<qq{}>, and C<qq[]>) or
+matching characters (C<qq##>, C<qqaa>, etc.).  It is generally used to allow
+the user to avoid having to escape characters:
+
+     my $quote = qq/He said "I like quotes."/;
+
+If the delimiter is not a bracketing pair, or if the brackets are
+unbalanced, you will need to escape the delimiter with C<\> if you wish to
+have that character in the string:
+
+    my $quote = qq{I have too many \} characters};
+
+But it is often better to just choose a delimiter that does not conflict
+with the string:
+
+    my $better = qq/I have too many } characters/;
+
+There are many special escapes such as C<\t> for tab and C<\n> for newline,
+as well as a generalized form of escape that uses Unicode ordinal numbers:
+
+    my $string = qq{provide references with your r\x{e9}sum\x{e9}.};
+
+Here C<\x{e9}> creates the character associated with the ordinal number 233
+(0xe9 in hexadecimal) in Unicode: LATIN SMALL LETTER E WITH ACUTE.
+
+For a full discussion of how strings work, see 
+L<perlop/Quote and Quote-like Operators>. 
+
+=head3 Example
+
+    my $name   = "World";
+    my $string = qq/Hello, $name!\n/; #$string is now "Hello World!\n";
+
+=head3 See also
+
+L</"X">, L<perlvar/$">, L<perlop/Quote and Quote‐like Operators>
+
 =head2 X[Y]
 
 =head2 (X)[Y]
