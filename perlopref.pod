@@ -32,6 +32,10 @@
 
 =head2 ${X}
 
+=head3 Class
+
+This belongs to L<perlop/Terms and List Operators (Leftward)>.
+
 =head3 Description
 
 If X is the name of a scalar variable, then this is just another way of
@@ -69,6 +73,10 @@ L</\X>, L<perlreftut>, and L<perlref>
 
 =head2 ${X}[Y]
 
+=head3 Class
+
+This belongs to L<perlop/Terms and List Operators (Leftward)>.
+
 =head3 Description
 
 If X is the name of an array variable, then this is just another way of
@@ -102,6 +110,10 @@ as the string.
 L</\X>, L<< /X->Y >>, L<perlreftut>, and L<perlref>
 
 =head2 @{X}
+
+=head3 Class
+
+This belongs to L<perlop/Terms and List Operators (Leftward)>.
 
 =head3 Description
 
@@ -141,6 +153,10 @@ L</\X>, L<perlreftut>, and L<perlref>
 
 =head2 (X)[Y]
 
+=head3 Class
+
+This belongs to L<perlop/Terms and List Operators (Leftward)>.
+
 =head3 Description
 
 This is the array/list index operator.  It retrieves the Yth value from X.
@@ -165,6 +181,10 @@ warning is thrown if L<warnings> are turned on).
 
 =head2 X{Y}
 
+=head3 Class
+
+This belongs to L<perlop/Terms and List Operators (Leftward)>.
+
 =head3 Description
 
 This is the hash index operator.  It retrieves the value associated with the
@@ -185,6 +205,10 @@ L<perldata> for information about slices).
 =head2 X->{Y}
 
 =head2 X->(Y)
+
+=head3 Class
+
+This is L<perlop/The Arrow Operator>.
 
 =head3 Description
 
@@ -215,6 +239,10 @@ Y (C<< X->(Y) >>).
     $sub->(@a); #prints "a = b + c\n"
 
 =head2 ++X
+
+=head3 Class
+
+This belongs to L<perlop/Auto‐increment and Auto‐decrement>.
 
 =head3 Description
 
@@ -247,6 +275,10 @@ The incrementing occurs before the use of the value.
 
 =head2 X++
 
+=head3 Class
+
+This belongs to L<perlop/Auto‐increment and Auto‐decrement>.
+
 =head3 Description
 
 This is the postfix auto-increment operator.  It behaves the same way as the
@@ -265,6 +297,10 @@ auto-increment operator, both values would be C<5>.
 
 =head2 --X
 
+=head3 Class
+
+This belongs to L<perlop/Auto‐increment and Auto‐decrement>.
+
 =head3 Description
 
 This is the prefix auto-decrement operator.  It is equivalent to 
@@ -281,6 +317,10 @@ are turned on).
     my $y = --$x; #$x and $y are now 4
 
 =head2 X--
+
+=head3 Class
+
+This belongs to L<perlop/Auto‐increment and Auto‐decrement>.
 
 =head3 Description
 
@@ -299,6 +339,10 @@ are turned on).
 
 =head2 X**Y
 
+=head3 Class
+
+This belongs to L<perlop/Exponentiation>
+
 =head3 Description
 
 This is the exponentiation operator.  It raises X to the Yth power.
@@ -314,6 +358,10 @@ L<warnings> are turned on).
     my $x = 2 ** 8; #$x is now 256
 
 =head2 !X
+
+=head3 Class
+
+This belongs to L<perlop/Symbolic Unary Operators>.
 
 =head3 Description
 
@@ -341,6 +389,10 @@ L</not X>
 
 =head2 ~X
 
+=head3 Class
+
+This belongs to L<perlop/Symbolic Unary Operators>.
+
 =head3 Description
 
 This is the bitwise negation operator (AKA C<1>'s complement operator).  The
@@ -362,6 +414,10 @@ are turned on).
 L<perlop/Bitwise String Operators> and L<perlop/Integer Arithmetic> 
 
 =head2 \X
+
+=head3 Class
+
+This belongs to L<perlop/Symbolic Unary Operators>.
 
 =head3 Description
 
@@ -397,6 +453,10 @@ L<< /X -> Y >> in L<perlopref>, L<perlreftut>, and L<perlref>
 
 =head2 +X
 
+=head3 Class
+
+This belongs to L<perlop/Symbolic Unary Operators>.
+
 =head3 Description
 
 This is the unary plus operator.  It has no effect whatsoever, even on
@@ -410,6 +470,10 @@ list of function arguments.
     print +(split ",", "a,b,c,d")[2], "\n"; #prints "c\n"
 
 =head2 -X
+
+=head3 Class
+
+This belongs to L<perlop/Symbolic Unary Operators>.
 
 =head3 Description
 
@@ -439,6 +503,10 @@ thrown if L<warnings> are turned on).
     $z = -"*foo"     #$z is now -0
 
 =head2 X =~ Y
+
+=head3 Class
+
+This belongs to L<perlop/Binding Operators>.
 
 =head3 Description
 
@@ -473,6 +541,10 @@ L<perlop>, L<perlretut>, and L<prelre>
 
 =head2 X !~ Y
 
+=head3 Class
+
+This belongs to L<perlop/Binding Operators>.
+
 =head3 Description
 
 This is the negative binding operator.  It behaves like the C<=~> operator,
@@ -493,6 +565,10 @@ L</X =~ Y>
 
 =head2 X * Y
 
+=head3 Class
+
+This belongs to L<perlop/Multiplicative Operators>.
+
 =head3 Description
 
 This is the multiplication operator.  It returns X multiplied by Y.
@@ -507,6 +583,10 @@ L<warnings> are turned on).
 
 =head2 X / Y
 
+=head3 Class
+
+This belongs to L<perlop/Multiplicative Operators>.
+
 =head3 Description
 
 This is the division operator.  It divides X by Y.
@@ -520,6 +600,10 @@ L<warnings> are turned on).
     my $x = 84/2; #$x is now 42
 
 =head2 X % Y
+
+=head3 Class
+
+This belongs to L<perlop/Multiplicative Operators>.
 
 =head3 Description
 
@@ -571,6 +655,10 @@ L<warnings> are turned on).
 
 =head2 (X) x Y
 
+=head3 Class
+
+This belongs to L<perlop/Multiplicative Operators>.
+
 =head3 Description
 
 This is the repetition operator.  When X is a scalar value it returns
@@ -588,6 +676,10 @@ are turned on).
 
 =head2 X + Y
 
+=head3 Class
+
+This belongs to L<perlop/Additive Operators>.
+
 =head3 Description
 
 This is the addition operator.  It returns the result of X plus Y.
@@ -601,6 +693,10 @@ L<warnings> are turned on).
     my $x = 40 + 2; #$x is now 42
 
 =head2 X - Y
+
+=head3 Class
+
+This belongs to L<perlop/Additive Operators>.
 
 =head3 Description
 
@@ -616,6 +712,10 @@ L<warnings> are turned on).
 
 =head2 X . Y
 
+=head3 Class
+
+This belongs to L<perlop/Additive Operators>.
+
 =head3 Description
 
 This is the concatenation operator.  It coerces its arguments to strings,
@@ -629,6 +729,10 @@ scalar context on X and Y.
     my $y = "the number of elements in \@a is" . @a;
 
 =head2 X << Y
+
+=head3 Class
+
+This belongs to L<perlop/Shift Operators>.
 
 =head3 Description
 
@@ -662,6 +766,10 @@ L<warnings> are turned on).
 
 =head2 X >> Y
 
+=head3 Class
+
+This belongs to L<perlop/Shift Operators>.
+
 =head3 Description
 
 This is the right-bit shift operator.  It shift bits that make up the
@@ -686,59 +794,171 @@ L<warnings> are turned on).
 
 =head2 -r
 
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
+
 =head2 -w
+
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
 
 =head2 -x
 
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
+
 =head2 -o
+
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
 
 =head2 -R
 
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
+
 =head2 -W
+
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
 
 =head2 -X
 
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
+
 =head2 -O
+
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
 
 =head2 -e
 
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
+
 =head2 -z
+
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
 
 =head2 -s
 
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
+
 =head2 -f
+
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
 
 =head2 -d
 
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
+
 =head2 -l
+
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
 
 =head2 -p
 
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
+
 =head2 -S
+
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
 
 =head2 -b
 
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
+
 =head2 -c
+
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
 
 =head2 -t
 
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
+
 =head2 -u
+
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
 
 =head2 -g
 
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
+
 =head2 -k
+
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
 
 =head2 -T
 
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
+
 =head2 -B
+
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
 
 =head2 -M
 
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
+
 =head2 -A
+
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
 
 =head2 -C
 
+=head3 Class
+
+This belongs to L<perlop/Named Unary Operators>.
+
 =head2 X < Y
+
+=head3 Class
+
+This belongs to L<perlop/Relational Operators>
 
 =head3 Description
 
@@ -764,6 +984,10 @@ L<warnings> are turned on).
 
 =head2 X > Y
 
+=head3 Class
+
+This belongs to L<perlop/Relational Operators>
+
 =head3 Description
 
 This is the numeric greater than operator.  It returns a true value if X is
@@ -787,6 +1011,10 @@ L<warnings> are turned on).
     }
 
 =head2 X <= Y
+
+=head3 Class
+
+This belongs to L<perlop/Relational Operators>
 
 =head3 Description
 
@@ -812,6 +1040,10 @@ L<warnings> are turned on).
 
 =head2 X >= Y
 
+=head3 Class
+
+This belongs to L<perlop/Relational Operators>
+
 =head3 Description
 
 This is the numeric less than or equal to operator.  It returns a true 
@@ -836,6 +1068,10 @@ L<warnings> are turned on).
 
 =head2 X lt Y
 
+=head3 Class
+
+This belongs to L<perlop/Relational Operators>
+
 =head3 Description
 
 This is the lexical less than operator (also known as the string less than
@@ -859,6 +1095,10 @@ C<127> characters, this order is the same as the ASCII order).
 
 =head2 X gt Y
 
+=head3 Class
+
+This belongs to L<perlop/Relational Operators>
+
 =head3 Description
 
 This is the lexical greater than operator (also known as the string greater
@@ -881,6 +1121,10 @@ C<127> characters, this order is the same as the ASCII order).
     }
 
 =head2 X le Y
+
+=head3 Class
+
+This belongs to L<perlop/Relational Operators>
 
 =head3 Description
 
@@ -906,6 +1150,10 @@ same as the ASCII order).
 
 =head2 X ge Y
 
+=head3 Class
+
+This belongs to L<perlop/Relational Operators>
+
 =head3 Description
 
 This is the lexical greater than or equal to operator (also known as the
@@ -929,6 +1177,10 @@ order is the same as the ASCII order).
     }
 
 =head2 X == Y
+
+=head3 Class
+
+This belongs to L<perlop/Equality Operators>.
 
 =head3 Description
 
@@ -972,6 +1224,10 @@ less than and greater than operators with a small delta:
 
 =head2 X != Y
 
+=head3 Class
+
+This belongs to L<perlop/Equality Operators>.
+
 =head3 Description
 
 This is the numeric not equals operator.  It returns true if X does not
@@ -1014,6 +1270,10 @@ less than and greater than operators with a small delta:
 
 =head2 X <=> Y
 
+=head3 Class
+
+This belongs to L<perlop/Equality Operators>.
+
 =head3 Description
 
 This is the numeric comparison operator.  It returns less than C<0>  if X is
@@ -1035,6 +1295,10 @@ L<warnings> are turned on).
 
 =head2 X eq Y
 
+=head3 Class
+
+This belongs to L<perlop/Equality Operators>.
+
 =head3 Description
 
 This is the lexical equality operator (aka the string equality operator or
@@ -1055,6 +1319,10 @@ the same string.
 
 =head2 X ne Y
 
+=head3 Class
+
+This belongs to L<perlop/Equality Operators>.
+
 =head3 Description
 
 This is the lexical not equals operator. (aka the string not equals operator
@@ -1074,6 +1342,10 @@ evaluate as the same string.
     }
 
 =head2 X cmp Y
+
+=head3 Class
+
+This belongs to L<perlop/Equality Operators>.
 
 =head3 Description
 
@@ -1096,6 +1368,10 @@ commonly seen used with the C<sort> function:
 
 =head2 X ~~ Y
 
+=head3 Class
+
+This belongs to L<perlop/Equality Operators>.
+
 =head3 Description
 
 This is the smartmatch operator.  In 5.10 and 5.10.1 it has different
@@ -1114,6 +1390,10 @@ See L<perlsyn/"Smart matching in detail"> for examples.
 L<perlsyn/"Smart matching in detail">
 
 =head2 X & Y
+
+=head3 Class
+
+This belongs to L<perlop/Bitwise And>.
 
 =head3 Description
 
@@ -1156,6 +1436,10 @@ L<perlop/Integer Arithmetic> and L<perlop/Bitwise String Operators>.
 
 =head2 X | Y
 
+=head3 Class
+
+This belongs to L<perlop/Bitwise Or and Exclusive Or>.
+
 =head3 Description
 
 This is the bitwise or operator.  It ors together the individual bits of X
@@ -1197,6 +1481,10 @@ L<perlop/Integer Arithmetic> and L<perlop/Bitwise String Operators>.
 
 =head2 X ^ Y
 
+=head3 Class
+
+This belongs to L<perlop/Bitwise Or and Exclusive Or>.
+
 =head3 Description
 
 This is the bitwise exclusive-or operator.  It exclusive-ors together the
@@ -1237,6 +1525,10 @@ L<perlop/Integer Arithmetic> and L<perlop/Bitwise String Operators>.
 
 =head2 X && Y
 
+=head3 Class
+
+This belongs to L<perlop/C−style Logical And>.
+
 =head3 Description
 
 This is the high-precedence logical and operator.  It returns X if X
@@ -1270,6 +1562,10 @@ C<while>.
 L</X and Y>
 
 =head2 X || Y
+
+=head3 Class
+
+This belongs to L<perlop/C−style Logical Or>.
 
 =head3 Description
 
@@ -1315,6 +1611,10 @@ L</X or Y>
 
 =head2 X // Y
 
+=head3 Class
+
+This belongs to L<perlop/C−style Logical Defined-Or>.
+
 =head3 Description
 
 This is the high-precedence logical defined-or.  It returns X if X is
@@ -1338,6 +1638,10 @@ It is most commonly used to create default values:
     print $z // $y, "\n"; #prints 5
 
 =head2 X .. Y
+
+=head3 Class
+
+This belongs to L<perlop/Range Operators>.
 
 =head3 Description
 
@@ -1380,6 +1684,10 @@ in which case it will return true and then false on the next test.
 
 =head2 X ... Y
 
+=head3 Class
+
+This belongs to L<perlop/Range Operators>.
+
 =head3 Description
 
 This is another form of the range/flip flop operator (L</X .. Y>).  Its
@@ -1420,6 +1728,10 @@ called.
 
 =head2 X ? Y : Z
 
+=head3 Class
+
+This belongs to L<perlop/Conditional Operators>.
+
 =head3 Description
 
 This is the conditional operator.  It works much like an if-then-else.  If
@@ -1453,6 +1765,10 @@ apply.
 
 =head2 X = Y
 
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
 =head3 Description
 
 This is the assignment operator.  It assigns Y to X.  The act of assigning
@@ -1472,6 +1788,10 @@ where you would normally use a plain variable:
     my $i = my $j = my $k = 10; #$i, $j, and $k are now all 10
 
 =head2 X **= Y
+
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
 
 =head3 Description
 
@@ -1496,6 +1816,12 @@ L</X = Y> and L</X ** Y>
 
 =head2 X += Y
 
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
+
 This is the addition assignment operator.  It is equivalent to 
 
     X = X + Y
@@ -1516,6 +1842,12 @@ assigned to).
 L</X = Y> and L</X + Y>
 
 =head2 X -= Y
+
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
 
 This is the subtraction assignment operator.  It is equivalent to 
 
@@ -1538,6 +1870,12 @@ L</X = Y> and L</X - Y>
 
 =head2 X .= Y
 
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
+
 This is the concatenation assignment operator.  It is equivalent to 
 
     X = X . Y
@@ -1558,6 +1896,12 @@ that can be assigned to).
 L</X = Y> and L</X . Y>
 
 =head2 X *= Y
+
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
 
 This is the multiplication assignment operator.  It is equivalent to 
 
@@ -1580,6 +1924,12 @@ L</X = Y> and L</X * Y>
 
 =head2 X /= Y
 
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
+
 This is the division assignment operator.  It is equivalent to 
 
     X = X / Y
@@ -1601,6 +1951,12 @@ L</X = Y> and L</X / Y>
 
 =head2 X %= Y
 
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
+
 This is the modulo assignment operator.  It is equivalent to 
 
     X = X % Y
@@ -1621,6 +1977,12 @@ something that can be assigned to).
 L</X = Y> and L</X % Y>
 
 =head2 X x= Y
+
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
 
 This is the scalar repetition assignment operator.  It is equivalent to 
 
@@ -1646,6 +2008,12 @@ L</X = Y> and L</X x Y>
 
 =head2 X &= Y
 
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
+
 This is the bitwise and assignment operator.  It is equivalent to 
 
     X = X & Y
@@ -1666,6 +2034,12 @@ assigned to).
 L</X = Y> and L</X & Y>
 
 =head2 X |= Y
+
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
 
 This is the bitwise or assignment operator.  It is equivalent to 
 
@@ -1688,6 +2062,12 @@ L</X = Y> and L</X | Y>
 
 =head2 X ^= Y
 
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
+
 This is the bitwise xor assignment operator.  It is equivalent to 
 
     X = X ^ Y
@@ -1708,6 +2088,12 @@ assigned to).
 L</X = Y> and L</X ^ Y>
 
 =head2 X <<= Y
+
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
 
 This is the left bit-shift assignment operator.  It is equivalent to 
 
@@ -1730,6 +2116,12 @@ L</X = Y> and L<<< /X << Y >>>
 
 =head2 X >>= Y 
 
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
+
 This is the right bit-shift assignment operator.  It is equivalent to 
 
     X = X >> Y
@@ -1750,6 +2142,12 @@ can be assigned to).
 L</X = Y> and L<<< /X >> Y >>>
 
 =head2 X &&= Y
+
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
 
 This is the logical and assignment operator.  It is equivalent to 
 
@@ -1773,6 +2171,12 @@ that can be assigned to).
 L</X = Y> and L</X && Y>
 
 =head2 X ||= Y
+
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
 
 This is the logical or assignment operator.  It is equivalent to 
 
@@ -1812,6 +2216,12 @@ L</X = Y>, L</X E<verbar>E<verbar> Y>, and L</X E<sol>E<sol>= Y>
 
 =head2 X //= Y
 
+=head3 Class
+
+This belongs to L<perlop/Assignment Operators>.
+
+=head3 Description
+
 This is the defined-or assignment operator.  It is equivalent to 
 
     X = X // Y
@@ -1842,6 +2252,10 @@ It is commonly used to ensure that a variable has a value:
 L</X = Y>, L</X E<sol>E<sol> Y>, L</X E<verbar>E<verbar> Y>
 
 =head2 X, Y
+
+=head3 Class
+
+This belongs to L<perlop/Comma Operators>.
 
 =head3 Description
 
@@ -1875,6 +2289,10 @@ C<(1,2,3)> and C<(1,2,3,)>) are identical.
     my $y = (++$x, ++$x, ++$x); #$y is now "f"
 
 =head2 X => Y
+
+=head3 Class
+
+This belongs to L<perlop/Comma Operators>.
 
 =head3 Description
 
@@ -1919,6 +2337,10 @@ That statement is functionally identical to
 
 =head2 not X
 
+=head3 Class
+
+This belongs to L<perlop/Logical Not>.
+
 =head3 Description
 
 This is the low-precedence logical negation operator.  It performs logical
@@ -1936,6 +2358,10 @@ negation, i.e., "not".  There is a high-precedence version C<!>.
 L</!X>
 
 =head2 X and Y
+
+=head3 Class
+
+This belongs to L<perlop/Logical And>.
 
 =head3 Description
 
@@ -1982,6 +2408,10 @@ L</X && Y>
 
 =head2 X or Y
 
+=head3 Class
+
+This belongs to L<perlop/Logical or, Defined or, and Exclusive Or>.
+
 =head3 Description
 
 This is the low-precedence logical or operator.  It returns the X if X
@@ -2024,6 +2454,10 @@ value).
 L</X E<verbar>E<verbar> Y>
 
 =head2 X xor Y
+
+=head3 Class
+
+This belongs to L<perlop/Logical or, Defined or, and Exclusive Or>.
 
 =head3 Description
 
