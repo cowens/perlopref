@@ -35,7 +35,7 @@
 =head3 Class
 
 This belongs to L<perlop/Terms and List Operators (Leftward)> and 
-L<perlop/Quote and Quote‐like Operators>.
+L<perlop/Quote and Quote-like Operators>.
 
 =head3 Description
 
@@ -69,14 +69,14 @@ L<perlop/Quote and Quote-like Operators>.
 =head3 See also
 
 L</qq(X)>, L</'X'>, L</q(X)>, L<perlvar/$">, 
-and L<perlop/Quote and Quote‐like Operators>
+and L<perlop/Quote and Quote-like Operators>
 
 =head2 qq(X)
 
 =head3 Class
 
 This belongs to L<perlop/Terms and List Operators (Leftward)> and 
-L<perlop/Quote and Quote‐like Operators>.
+L<perlop/Quote and Quote-like Operators>.
 
 =head3 Description
 
@@ -125,14 +125,14 @@ L<perlop/Quote and Quote-like Operators>.
 =head3 See also
 
 L</q(X)>, L</'X'> L</"X">, L<perlvar/$">, 
-and L<perlop/Quote and Quote‐like Operators>
+and L<perlop/Quote and Quote-like Operators>
 
 =head2 'X'
 
 =head3 Class
 
 This belongs to L<perlop/Terms and List Operators (Leftward)> and 
-L<perlop/Quote and Quote‐like Operators>.
+L<perlop/Quote and Quote-like Operators>.
 
 =head3 Description
 
@@ -156,14 +156,14 @@ L<perlop/Quote and Quote-like Operators>.
 =head3 See also
 
 L</">, L</qq(X)>, L</q(X)>, L<perlvar/$">, 
-and L<perlop/Quote and Quote‐like Operators>
+and L<perlop/Quote and Quote-like Operators>
 
 =head2 q(X)
 
 =head3 Class
 
 This belongs to L<perlop/Terms and List Operators (Leftward)> and 
-L<perlop/Quote and Quote‐like Operators>.
+L<perlop/Quote and Quote-like Operators>.
 
 =head3 Description
 
@@ -202,7 +202,7 @@ L<perlop/Quote and Quote-like Operators>.
 =head3 See also
 
 L</"X">, L</'X'>, L</q(X)>, L<perlvar/$">, 
-and L<perlop/Quote and Quote‐like Operators>
+and L<perlop/Quote and Quote-like Operators>
 
 =head2 qw(X)
 
@@ -241,7 +241,7 @@ escape.
 
 =head3 See Also
 
-L</'X'>, L</q(X)>, and L<perlop/Quote and Quote‐like Operators>
+L</'X'>, L</q(X)>, and L<perlop/Quote and Quote-like Operators>
 
 =head2 X[Y]
 
@@ -620,7 +620,7 @@ L</\X>, L<perlreftut>, and L<perlref>
 
 =head3 Class
 
-This belongs to L<perlop/Auto‐increment and Auto‐decrement>.
+This belongs to L<perlop/Auto-increment and Auto-decrement>.
 
 =head3 Description
 
@@ -655,7 +655,7 @@ The incrementing occurs before the use of the value.
 
 =head3 Class
 
-This belongs to L<perlop/Auto‐increment and Auto‐decrement>.
+This belongs to L<perlop/Auto-increment and Auto-decrement>.
 
 =head3 Description
 
@@ -677,7 +677,7 @@ auto-increment operator, both values would be C<5>.
 
 =head3 Class
 
-This belongs to L<perlop/Auto‐increment and Auto‐decrement>.
+This belongs to L<perlop/Auto-increment and Auto-decrement>.
 
 =head3 Description
 
@@ -698,7 +698,7 @@ are turned on).
 
 =head3 Class
 
-This belongs to L<perlop/Auto‐increment and Auto‐decrement>.
+This belongs to L<perlop/Auto-increment and Auto-decrement>.
 
 =head3 Description
 
@@ -1909,7 +1909,7 @@ L<perlop/Integer Arithmetic> and L<perlop/Bitwise String Operators>.
 
 =head3 Class
 
-This belongs to L<perlop/C−style Logical And>.
+This belongs to L<perlop/C-style Logical And>.
 
 =head3 Description
 
@@ -1947,7 +1947,7 @@ L</X and Y>
 
 =head3 Class
 
-This belongs to L<perlop/C−style Logical Or>.
+This belongs to L<perlop/C-style Logical Or>.
 
 =head3 Description
 
@@ -1995,7 +1995,7 @@ L</X or Y>
 
 =head3 Class
 
-This belongs to L<perlop/C−style Logical Defined-Or>.
+This belongs to L<perlop/C-style Logical Defined-Or>.
 
 =head3 Description
 
