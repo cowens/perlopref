@@ -3040,6 +3040,10 @@ There are idioms in Perl 5 that appear to be operators, but are really a
 combination of several operators or pieces of syntax. These pseudo-operators
 have the precedence of the constituent parts.
 
+N.B. There are often better ways of doing all of these things and those ways
+will be easier to understand for the people who will maintain your code
+after you. 
+
 =head2 !!X
 
 =head3 Description
