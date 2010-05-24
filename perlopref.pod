@@ -769,7 +769,8 @@ L<warnings> are turned on).
 
 =head3 Example
 
-    my $x = 2 ** 8; #$x is now 256
+    my $x = 2 ** 8;             #$x is now 256
+    my $y = log(2 ** 8)/log(2); #$y is now 8;
 
 =head3 See also
 
@@ -1905,7 +1906,7 @@ See L<perlsyn/"Smart matching in detail"> for examples.
 
 =head3 See also
 
-L<perlsyn/"Smart matching in detail">
+L</~~X>, L<perlsyn/"Smart matching in detail">, and L<perlfunc/scalar>
 
 =head2 X & Y
 
@@ -3025,5 +3026,155 @@ an empty string.
 
 L</X or Y>, L</X E<verbar>E<verbar> Y>, L</X E<sol>E<sol> Y>, 
 L</X E<sol> Y>
+
+=head1 Pseudo-operators
+
+There are idioms in Perl 5 that appear to be operators, but are really a
+combination of several operators or pieces of syntax. These pseudo-operators
+have the precedence of the constituent parts.
+
+=head2 ()= X
+
+=head3 Description
+
+This pseudo-operator is the list assignment operator (aka the countof
+operator).  It is made up of two items C<()>, and C<=>.  In scalar context
+it returns the number of items in the list X.  In list context it returns an
+empty list.  It is useful when you have something that returns a list and
+you want to know the number of items in that list and don't care about the
+list's contents.  It is needed because the comma operator returns the last
+item in the sequence rather than the number of items in the sequence when it
+is placed in scalar context.
+
+It works because the assignment operator returns the number of items
+available to be assigned when its left hand side has list context.  In the
+following example there are five values in the list being assigned to the
+list C<($x, $y, $z)>, so C<$count> is assigned C<5>.
+
+    my $count = my ($x, $y, $z) = qw/a b c d e/;
+
+The empty list (the C<()> part of the pseudo-operator) triggers this
+behavior.
+
+=head3 Example
+    
+    sub f { return qw/a b c d e/ }
+
+    my $count = ()= f();              #$count is now 5
+
+    my $string = "cat cat dog cat";
+
+    my $cats = ()= $string =~ /cat/g; #$cats is now 3
+
+    print scalar( ()= f() ), "\n";    #prints "5\n"
+
+=head3 See also
+
+L</X = Y> and L</X =()= Y>
+
+=head2 X =()= Y
+
+This pseudo-operator is often called the goatse operator for reasons better
+left unexamined; it is also called the list assignment or countof operator.
+It is made up of three items C<=>, C<()>, and C<=>.  When X is a scalar
+variable, the number of items in the list Y is returned.  If X is an array
+or a hash it it returns an empty list.  It is useful when you have something
+that returns a list and you want to know the number of items in that list
+and don't care about the list's contents.  It is needed because the comma
+operator returns the last item in the sequence rather than the number of
+items in the sequence when it is placed in scalar context.
+
+It works because the assignment operator returns the number of items
+available to be assigned when its left hand side has list context.  In the
+following example there are five values in the list being assigned to the
+list C<($x, $y, $z)>, so C<$count> is assigned C<5>.
+
+    my $count = my ($x, $y, $z) = qw/a b c d e/;
+
+The empty list (the C<()> part of the pseudo-operator) triggers this
+behavior.
+
+=head3 Example
+    
+    sub f { return qw/a b c d e/ }
+
+    my $count =()= f();              #$count is now 5
+
+    my $string = "cat cat dog cat";
+
+    my $cats =()= $string =~ /cat/g; #$cats is now 3
+
+=head3 See also
+
+L</=> and L</()=>
+
+=head2 ~~X
+
+=head3 Description
+
+This pseudo-operator is named the scalar context operator.  It is made up of
+two bitwise negation operators.  It provides scalar context to the
+expression X.  It works because the first bitwise negation operator provides
+scalar context to X and performs a bitwise negation of the result; since the
+result of two bitwise negations is the original item, the value of the
+original expression is preserved.
+
+With the addition of the Smart match operator, this pseudo-operator is even
+more confusing.  The C<scalar> function is much easier to understand and you
+are encouraged to use it instead.
+
+=head3 Example
+
+    my @a = qw/a b c d/;
+
+    print ~~@a, "\n"; #prints 4
+
+=head3 See also
+
+L</~X>, L</X ~~ Y>, and L<perlfunc/scalar>
+
+=head2 X }{ Y
+
+=head3 Description
+
+This pseudo-operator is called the Eskimo-kiss operator because it looks
+like two faces touching noses.  It is made up of an closing brace and an
+opening brace.  It is used when using C<perl> as a command-line program with
+the C<-n> or C<-p> options.  It has the effect of running X inside of the
+loop created by C<-n> or C<-p> and running Y at the end of the program.  It
+works because the closing brace closes the loop created by C<-n> or C<-p>
+and the opening brace creates a new bare block that is closed by the loop's
+original ending.  You can see this behavior by using the L<B::Deparse>
+module.  Here is the command C<perl -ne 'print $_;'> deparsed:
+
+    LINE: while (defined($_ = <ARGV>)) {
+        print $_;
+    }
+
+Notice how the original code was wrapped with the C<while> loop.  Here is
+the deparsing of C<perl -ne '$count++ if /foo/; }{ print "$count\n"'>:
+
+    LINE: while (defined($_ = <ARGV>)) {
+        ++$count if /foo/;
+    }
+    {
+        print "$count\n";
+    }
+
+Notice how the C<while> loop is closed by the closing brace we added and the
+opening brace starts a new bare block that is closed by the closing brace
+that was originally intended to close the C<while> loop.
+
+=head3 Example
+
+    # count unique lines in the file FOO
+    perl -nle '$seen{$_}++ }{ print "$_ => $seen{$_}" for keys %seen' FOO
+
+    # sum all of the lines until the user types control-d
+    perl -nle '$sum += $_ }{ print $sum'
+
+=head3 See also
+
+L<perlrun> and L<perlsyn>
 
 =cut
