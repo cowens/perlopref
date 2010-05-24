@@ -3033,6 +3033,25 @@ There are idioms in Perl 5 that appear to be operators, but are really a
 combination of several operators or pieces of syntax. These pseudo-operators
 have the precedence of the constituent parts.
 
+=head2 !!X
+
+=head3 Description
+
+This pseudo-operator is the boolean conversion operator.  It is made up of
+two logical negation operators.  It returns C<1> if X evaluates to a true
+value or C<""> if X evaluates to a false value.  It is useful when you want
+to convert a value to specific true or false values rather than one of the
+numerous true and false values in Perl.
+
+=head3 Example
+
+    my $x = !!"this is a true value"; #$x is now true
+    my $y = !!0;                      #$y is now "" 
+
+=head3 See also
+
+L</!X>
+
 =head2 ()= X
 
 =head3 Description
