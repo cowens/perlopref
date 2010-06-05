@@ -2520,6 +2520,9 @@ That is it divides X by Y and then assigns the result to X.  This means that
 X must be a valid lvalue (i.e. it must be something that can be assigned
 to).
 
+Warning: If Y is 0 or evaluates to 0 the program will die with a message
+like C<Illegal division by zero>.
+
 =head3 Example
 
     my $x = 2;
@@ -2546,6 +2549,9 @@ This is the modulo assignment operator.  It is equivalent to
 That is it computes the remainder of X divided by Y and then assigns the
 result to X.  This means that X must be a valid lvalue (i.e. it must be
 something that can be assigned to).
+
+Warning: If Y is 0 or evaluates to 0 the program will die with a message
+like C<Illegal modulus zero>.
 
 =head3 Example
 
