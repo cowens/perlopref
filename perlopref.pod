@@ -2353,12 +2353,19 @@ This belongs to L<perlop/Assignment Operators>.
 
 =head3 Description
 
-This is the assignment operator.  It assigns Y to X.  The act of assigning
-creates an lvalue, that is the result of an assignment can be used in places
-where you would normally use a plain variable:
+If X is a scalar, then this is the assignment operator.  It assigns Y to X.
+The act of assigning creates an lvalue, that is the result of an assignment
+can be used in places where you would normally use a plain variable:
 
     my $str = "foobar";
     (my $modified = $str) =~ s/foo/bar/; #the substitution affects $modified
+
+If X is a list, then this is the list assignment operator and it provides
+list context to Y.  The first item in the list Y is assigned to the first
+item in list X, the second to the second, and so on.  If placed in scalar
+context, the return value of list assignment is the number of items in the
+second list.  If placed in list context it returns the list X (after the
+assignment has taken place).
 
 =head3 Example
 
@@ -2368,6 +2375,8 @@ where you would normally use a plain variable:
     ($x, $y) = ($y, $x); #$x is now 6 and $y is now 5
 
     my $i = my $j = my $k = 10; #$i, $j, and $k are now all 10
+
+    my $m = my ($n, $o) = ("a", "b", "c") #$m is now 3
 
 =head2 X **= Y
 
