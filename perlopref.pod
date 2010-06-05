@@ -3139,43 +3139,7 @@ behavior.
 
 =head3 See also
 
-L</X = Y> and L</X =()= Y>
-
-=head2 X =()= Y
-
-This pseudo-operator is often called the goatse operator for reasons better
-left unexamined; it is also called the list assignment or countof operator.
-It is made up of three items C<=>, C<()>, and C<=>.  When X is a scalar
-variable, the number of items in the list Y is returned.  If X is an array
-or a hash it it returns an empty list.  It is useful when you have something
-that returns a list and you want to know the number of items in that list
-and don't care about the list's contents.  It is needed because the comma
-operator returns the last item in the sequence rather than the number of
-items in the sequence when it is placed in scalar context.
-
-It works because the assignment operator returns the number of items
-available to be assigned when its left hand side has list context.  In the
-following example there are five values in the list being assigned to the
-list C<($x, $y, $z)>, so C<$count> is assigned C<5>.
-
-    my $count = my ($x, $y, $z) = qw/a b c d e/;
-
-The empty list (the C<()> part of the pseudo-operator) triggers this
-behavior.
-
-=head3 Example
-    
-    sub f { return qw/a b c d e/ }
-
-    my $count =()= f();              #$count is now 5
-
-    my $string = "cat cat dog cat";
-
-    my $cats =()= $string =~ /cat/g; #$cats is now 3
-
-=head3 See also
-
-L</=> and L</()=>
+L</X = Y>
 
 =head2 ~~X
 
