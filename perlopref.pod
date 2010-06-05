@@ -2876,6 +2876,10 @@ C<(1,2,3)> and C<(1,2,3,)>) are identical.
     my $x = ("a", "b", "c");    #$x is now "c"
     my $y = (++$x, ++$x, ++$x); #$y is now "f"
 
+=head3 See also
+
+L<</X => Y>>
+
 =head2 X => Y
 
 =head3 Class
@@ -2924,7 +2928,7 @@ That statement is functionally identical to
 
 =head3 See also
 
-L<</X => Y>>
+L<</X, Y>>
 
 =head2 not X
 
