@@ -720,7 +720,10 @@ are turned on).
 =head3 Example
 
     my $x = 5;
-    my $y = --$x; #$x and $y are now 4
+    my $y = --$x;  #$x and $y are now 4
+
+    my $s = "foo";
+    my $t = --$s;  #$s and $t are now -1
 
 =head3 See also
 
@@ -745,7 +748,13 @@ are turned on).
 =head3 Example
 
     my $x = 5;
-    my $y = $x--; #$x is now 4 and $y is now 5
+    my $y = $x--;  #$x is now 4 and $y is now 5
+
+    my $q = "200 Quatloos for the newcomer";
+    my $r = $q--;  #$q is now 199 and $r is "200 Quatloos for the newcomer"
+
+    my $s = "foo";
+    my $t = $s--;  #$s is now -1 and $t is "foo"
 
 =head3 See also
 
@@ -771,6 +780,9 @@ L<warnings> are turned on).
 
     my $x = 2 ** 8;             #$x is now 256
     my $y = log(2 ** 8)/log(2); #$y is now 8;
+
+    my $s = 2 ** "foo";         #$s is now 1 (2 ** 0 is 1)
+    my $t = 2 ** "4ever";       #$t is now 16
 
 =head3 See also
 
@@ -1017,7 +1029,9 @@ L<warnings> are turned on).
 
 =head3 Example
 
-    my $x = 2 * 21; #$x is now 42
+    my $x = 2 * 21;      #$x is now 42
+    my $y = 2 * "five";  #$y is now 0 (2 * 0)
+    my $z = 2 * "80s";   #$z is now 160
 
 =head3 See also
 
@@ -1037,9 +1051,14 @@ Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
 L<warnings> are turned on).
 
+Warning: If Y is 0 or evaluates to 0 the program will die with a message
+like C<Illegal division by zero>.
+
 =head3 Example
 
-    my $x = 84/2; #$x is now 42
+    my $x = 84/2;     #$x is now 42
+    my $y = 84/"2";   #$y is now 42
+    my $z = "five"/2  #$z is now 0 (0/2)
 
 =head3 See Also
 
@@ -1091,11 +1110,17 @@ Both X and Y will be converted to numbers before the operation; if they
 cannot be converted they will turned into C<0> (and a warning is thrown if
 L<warnings> are turned on).
 
+Warning: If Y is 0 or evaluates to 0 the program will die with a message
+like C<Illegal modulus zero>.
+
 =head3 Example
 
     my $odd = $x % 2; #$odd is 1 when $x is odd and 0 when $x is even
 
     my $hour = ($hour + 1) % 24; # 23 (11pm) plus 1 hour is 0 (12am). 
+
+    my $x = "foo" % 3;           #$x is now 0 (0 % 3)
+    my $y = "5" % 4;             #$y is now 1
 
 =head3 See also
 
@@ -1111,7 +1136,8 @@ This belongs to L<perlop/Multiplicative Operators>.
 
 This is the repetition operator.  When X is a scalar value it returns
 a string made up of X repeated Y times.  When X is a list it returns
-a list made up of X repeated Y times.
+a list made up of X repeated Y times.  If Y is less than 1 an empty string
+is returned.
 
 Y will be converted to a number before the operation, and if it cannot be
 converted it will turned into C<0> (and a warning is thrown if L<warnings>
@@ -1119,8 +1145,11 @@ are turned on).
 
 =head3 Example
 
-    my $x = "abc" x 3;   #$x is now the string "abcabcabc"
-    my @a = ("abc") x 3; #@a is now ("abc", "abc", "abc")
+    my $x = "abc" x 3;    #$x is now the string "abcabcabc"
+    my @a = ("abc") x 3;  #@a is now ("abc", "abc", "abc")
+
+    my $s = "abcd" x "a"; #$s is now "" ("abcd" x 0)
+    my $t = "abcd" x "2"; #$t is now "abddabcd"
 
 =head2 X + Y
 
@@ -1138,7 +1167,9 @@ L<warnings> are turned on).
 
 =head3 Example
 
-    my $x = 40 + 2; #$x is now 42
+    my $x = 40 + 2;   #$x is now 42
+    my $y = 40 + "a"; #$y is now 40 (40 + 0)
+    my $y = 40 + "2"; #$y is now 42
 
 =head3 See also
 
@@ -1160,7 +1191,9 @@ L<warnings> are turned on).
 
 =head3 Example
 
-    my $x = 100 - 58; #$x is now 42
+    my $x = 100 - 58;     #$x is now 42
+    my $y = 100 - "five"; #$y is now 100 (100 - 0)
+    my $z = 100 - "58";   #$z is now 42
 
 =head3 See also
 
