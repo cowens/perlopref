@@ -2857,7 +2857,8 @@ This belongs to L<perlop/Comma Operators>.
 =head3 Description
 
 This is the comma operator.  In list context it builds a list.  In scalar
-context it evaluates each item and returns the value of the last item.
+context it evaluates each item but the last in void context, and then
+evaluates the last in scalar context and returns it.
 
 Due to the fact that the assignment operator has higher precedence, you must
 surround the list with parentheses.  For example,
